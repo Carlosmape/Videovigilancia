@@ -17,8 +17,10 @@
 
                 <!-- Title -->
                 <h1 class="articleTitle"><? echo $row['TITLE'];?></h1>
-								<p class="articleDate"><span class="glyphicon glyphicon-time"></span><?php echo $row['DATE']?></p>
-
+                <?php
+								if ($row['TYPE']!=0){?>
+									<p class="articleDate"><span class="glyphicon glyphicon-time"></span><?echo $row['DATE']?></p>
+								<?}?>
                 <!-- Preview Image -->
                 <img class="img-responsive articleImage" src="<?php echo $row['IMAGEHEADER']?>" alt="">
 
