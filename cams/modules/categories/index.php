@@ -1,0 +1,127 @@
+<?php
+require "../../includes/connection.php";
+require "../../includes/config.php";
+require "../../includes/sqlfunctions.php";
+ 
+	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //if you are connected
+		$_SESSION['connection']->keepalive(); //refresh connection timeout
+		$database = new Sqlconnection;//connect to database in order to extract users info
+		if (isset($database)){
+			$categories = $database->getAllCategories();
+			echo '<h1 class="page-header">Categories</h1>';?>
+				<form id="form" class="row" action="" method="post">
+					<div class="form-group col-md-2">
+						<input class="form-control btn btn-info" type="button" id="Save" name="Save" value="Add category">
+					</div>
+					<div class="form-group col-md-4">
+						<input class="form-control" type="text" id="Title" name="Title" placeholder="A title ...">
+					</div>
+					<div class="form-group col-md-4">
+						<label class="control-label col-md-4" for="categoryParent">Parent</label>
+						<select class="col-md-6 btn btn-default" type="number" id="categoryParent" name="categoryParent" placeholder="A category...">
+							<option value="">-</option>
+							<? foreach ($categories as $cat){
+									echo "<option value='".$cat[ID]."'>".$cat['TITLE']."</option>";
+							}
+							?>
+						</select>
+					</div>
+				</form>
+				<script src="modules/categories/functions.js"></script>
+
+			<?php
+			//will show users info
+			//first open table head and body putting as columns as you need
+			echo '
+			<div class="table-responsive">
+				<table class="table table-striped">	
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Parent</th>
+							<th>Title</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+					';
+							foreach ($categories as $row){?>
+								<tr>
+									<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
+									<td id="rowParent<?php echo $row['ID']?>" class="rowParent"><?php echo $row['PARENTID']?></td>
+									<td id="rowTitle<?php echo $row['ID']?>" class="rowTitle"><?php echo $row['TITLE']?></td>
+									<td><a href="#" class="editCategory" id="editCategory<?php echo $row['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+									<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $row['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
+									</td>
+								</tr>
+						<?	}
+						echo '
+					</tbody>
+				</table>
+			</div>';
+		}else{
+		  echo "Error CAMS could not connect to your DATABASE";
+		}
+	}
+?>
+<!--MODAL WINDOW FOR EDITING USERS -->
+  <!-- Modal -->
+<div class="modal fade" id="editCategoryModal" role="dialog">
+	<div class="modal-dialog">
+	
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Editing user</h4>
+			</div>
+			<div class="modal-body">
+				<form id="editForm" class="form-horizontal">
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="email">ID:</label> 
+						<input class="col-sm-8" type="text" id="editID" name="editID" placeholder="" readonly required>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="email">Title:</label>
+						<input class="col-sm-8" type="text" id="editTitle" name="editTitle" placeholder="" required>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="email">Parent:</label>
+						<select class="col-md-6 btn btn-default" type="number" id="editParent" name="editParent" placeholder="A category...">
+							<option value="">-</option>
+							<? foreach ($categories as $cat){
+									echo "<option value='".$cat[ID]."'>".$cat['TITLE']."</option>";
+							}
+							?>
+						</select>
+					</div>
+					<div class="form-group">
+						<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
+						<input class="btn btn-info col-sm-4" type="button" id="Edit" name="Edit" data-dismiss="modal" value="Edit">
+					</div>
+				</form>
+			</div>
+			<div	class="modal-footer">
+			</div>
+		</div>
+		
+	</div>
+</div>
+<div class="modal fade" id="deleteCategoryModal" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<h3>¿Are you sure?</h3>
+			</div>
+			<div	class="modal-footer">
+				<form>
+					<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
+					<button class="btn btn-danger col-sm-4" type="button" id="Delete" name="Delete" data-dismiss="modal" value="Delete">Delete</button>
+				</form>
+			</div>
+		</div>
+		
+	</div>
+</div>

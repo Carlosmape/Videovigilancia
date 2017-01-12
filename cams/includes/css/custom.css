@@ -1,0 +1,9 @@
+.main, .sidebar{
+  padding-top:50px;
+}
+a.delete>span{
+	color:#d9534f;
+}
+.form-signin{
+	margin-top: 15em;
+}

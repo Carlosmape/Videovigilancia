@@ -1,0 +1,67 @@
+/*!
+ * Start CAMS - Blog Template
+ * Copyright 2017 Camape
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+footer {
+    margin: 50px 0;
+}
+
+/*CUSTOMIZE YOUR BLOG INDEX HERE*/
+.form-control:focus{
+	border-color:#449348;	
+}
+a{
+	color:#449348;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+}
+a:hover{
+	color:#55c65b;
+	text-decoration-line: none;
+}
+.blogNavigator{
+	background-color:#55c65b;
+	border-color: #449348;
+}
+.blogMenu>li>.menuOption{
+	color:#333;
+}
+.blogMenu>li>.menuOption:hover{
+	background-color:#449348;
+}
+.articleTitle{}
+.articleDate{
+	float:right;
+	position: relative;
+	top: -2em;
+	color: grey;
+}
+.articleImage{
+	background-size: contain;
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+}
+.articleImage:hover{
+	-webkit-transform: scale(1.01);
+	-moz-transform: scale(1.01);
+	-o-transform: scale(1.01);
+	-ms-transform: scale(1.01);
+	transform: scale(1.01)
+}
+.articleReadMore{
+	background-color:#449348;
+	border-color:#55c65b;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+}
+.articleReadMore:hover{
+	background-color:#55c65b;
+	border-color:#449348;
+}
