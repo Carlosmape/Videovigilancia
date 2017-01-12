@@ -37,9 +37,15 @@ require "../../includes/sqlfunctions.php";
 					<input class="col-md-6"type="text" id="articleTitle" name="articleTitle" value="<?php echo $title?>" placeholder="A title for your article...">
 					<div class="row"></div>
 					<label class="control-label col-md-2" for="articleType">Type</label>
-					<select class="col-md-6" type="number" id="articleType" name="articleType" value="<?php echo $type?>">
-						<option value="1">Blog article</option>
-						<option value="0">Static page</option>
+					<select class="col-md-6" type="number" id="articleType" name="articleType">
+						<option value="0" <?
+							if ($type==0)
+								echo "selected";
+						?>>Static page</option>
+						<option value="1" <?
+							if ($type==1)
+								echo "selected";
+						?>>Blog article</option>
 						<option></option>
 					</select>
 				</div>
@@ -48,7 +54,10 @@ require "../../includes/sqlfunctions.php";
 					<select class="col-md-6" type="number" id="articleCategory" name="articleCategory" placeholder="A category...">
 						<option value="0">-</option>
 						<? foreach ($categories as $cat){
-								echo "<option value='".$cat[ID]."'>".$cat['TITLE']."</option>";
+								$selected = "";
+								if($cat[ID]==$category) 
+									$selected = "selected";
+								echo "<option value='".$cat[ID]."'".$selected.">".$cat['TITLE']."</option>";
 						}
 						?>
 					</select>
