@@ -2,23 +2,7 @@
 	require_once "cams/includes/config.php";
 ?>
  <!-- Blog Sidebar Widgets Column -->
-			<div class="col-md-4 sidebar">
-
-					<!-- Blog Search Well -->
-					<div class="well">
-						<h4>Search</h4>
-						<form action="" method="get">
-							<div class="input-group">
-									<input type="text" name="search" class="form-control">
-									<span class="input-group-btn">
-											<button class="btn btn-default" type="submit">
-													<span class="glyphicon glyphicon-search"></span>
-									</button>
-									</span>
-							</div>
-						</form>
-						<!-- /.input-group -->
-					</div>
+			<div class="col-md-3 sidebar">
 
 					<!-- Blog Categories Well -->
 					<div class="well">
@@ -32,7 +16,7 @@
 												$categories = $database->getAllCategories();
 												foreach ($categories as $cat){
 													echo "
-													<li><a href='#".$cat['ID']."'>".$cat['TITLE']."</a>
+													<li><a href='/blog.php?category=".$cat['TITLE']."'>".$cat['TITLE']."</a>
 													</li>";
 												}
 											}?>

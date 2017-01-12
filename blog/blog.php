@@ -10,7 +10,10 @@ if (isset($database)){
 		$searching = true;
 	}else if(isset($_GET['p'])){//if looking for next page
 		$articles = $database->getAllArticlesIndex(strip_tags($_GET['p']-1));
-	}	else{
+	}	else if (isset($_GET['category'])){
+		$articles = $database->getArticlesByCategory(strip_tags($_GET['category']));
+	}
+	else{
 		$articles = $database->getAllArticlesIndex();
 	}
 ?>
@@ -18,7 +21,7 @@ if (isset($database)){
 	<div class="container">
 	
 		<!-- Blog Entries Column -->
-		<div class="col-md-8">
+		<div class="col-md-9">
 			<?if ($searching){?>
 				<div class="row">
 					<h1 class="col-md-8"><span class="glyphicon glyphicon-search"></span> <?echo $_GET['search'];?></h1>

@@ -11,7 +11,7 @@
 ?>
             <!-- Blog Post Content Column -->
           <div class="container">
-            <div class="col-lg-8">
+            <div class="col-lg-9">
 
                 <!-- Blog Post -->
 

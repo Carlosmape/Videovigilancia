@@ -58,6 +58,17 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<!-- Search form -->
+								<form class="navbar-form navbar-right" action="" method="get">
+									<div class="input-group">
+											<input type="text" name="search" class="form-control">
+											<span class="input-group-btn">
+													<button class="btn btn-default" type="submit">
+															<span class="glyphicon glyphicon-search"></span>
+											</button>
+											</span>
+									</div>
+								</form><!-- /search form -->
                 <ul class="blogMenu nav navbar-nav navbar-right">
 									<?
 									$database = new Sqlconnection;//connect to database in order to extract users info
@@ -72,6 +83,7 @@
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
+            
         </div>
         <!-- /.container -->
     </nav>

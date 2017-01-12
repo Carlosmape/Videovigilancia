@@ -26,6 +26,9 @@
      function getAllArticles(){
        return $result = $this->connection->query(" SELECT * FROM `ARTICLES` ORDER BY `DATE` DESC, `ID` DESC;");
      }
+     function getArticlesByCategory($category){
+       return $result = $this->connection->query(" SELECT * FROM ARTICLES, CATEGORIES WHERE ARTICLES.CATEGORIES = CATEGORIES.ID and CATEGORIES.TITLE = '$category';");
+     }
      function getAllArticlesIndex($limit = 0){
 			 $limit = $limit*10;
        return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE=1 ORDER BY `DATE` DESC, `ID` DESC LIMIT $limit,10;");
