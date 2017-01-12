@@ -12,14 +12,14 @@ $("input#newArticle").click(function() {
 });
 $("input#articleSave").click(function(){
 	var formData = $("form#article").serialize();
-	formData=formData+"&articleText="+(CKEDITOR.instances['editor1'].getData()).replace('\n', '');
-	//alert(formData);
+	formData=formData+"&articleText="+escape(CKEDITOR.instances['editor1'].getData().replace('\n', ''));
+	alert(formData);
 	$.ajax({
 		type: 'POST',
 		url: 'modules/articles/saveArticle.php',
 		data: formData,
 		success:function(response){
-			//alert("response: "+response);
+			alert("response: "+response);
 			$.ajax({//refreshing the page
 				type: "post",
 				url: "modules/articles/index.php",

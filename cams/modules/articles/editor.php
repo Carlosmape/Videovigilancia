@@ -70,7 +70,7 @@ require "../../includes/sqlfunctions.php";
 					<input id="articleImage" type="text" name="articleImage" placeholder="Path to a image..." value=<?echo $image?>>
 				</div>
 				<div class="form-group col-md-12">
-					<textarea id="editor1" name="articleText1"><?php echo $text?></textarea>
+					<textarea id="editor1"><?php echo $text?></textarea>
 
 					<script>
 						CKEDITOR.replace( 'editor1', {
