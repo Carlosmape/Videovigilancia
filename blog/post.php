@@ -11,7 +11,7 @@
 ?>
             <!-- Blog Post Content Column -->
           <div class="container">
-            <div class="col-lg-9">
+            <div class="col-md-9">
 
                 <!-- Blog Post -->
 
@@ -27,7 +27,7 @@
                 <hr>
 
                 <!-- Post Content -->
-                <p><?php echo $row['CONTENT']?></p>
+                <div class="articleContent"><?php echo $row['CONTENT']?></div>
                 <hr>
 
                 <!-- Blog Comments -->

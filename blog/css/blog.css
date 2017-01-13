@@ -65,3 +65,9 @@ a:hover{
 	background-color:#55c65b;
 	border-color:#449348;
 }
+.articleContent{
+	text-align:justify;
+}
+.articleContent>img{
+	
+}
