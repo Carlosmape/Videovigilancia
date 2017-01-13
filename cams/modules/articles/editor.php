@@ -41,12 +41,15 @@ require "../../includes/sqlfunctions.php";
 						<option value="0" <?
 							if ($type==0)
 								echo "selected";
-						?>>Static page</option>
+						?>>Static page (Menu)</option>
 						<option value="1" <?
 							if ($type==1)
 								echo "selected";
 						?>>Blog article</option>
-						<option></option>
+						<option value="1" <?
+							if ($type==2)
+								echo "selected";
+						?>>Static page (Menu hidden)</option>
 					</select>
 				</div>
 				<div class="form-group col-md-6">
