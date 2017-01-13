@@ -37,16 +37,16 @@
      }
      function getAllArticlesIndex($limit = 0){
 			 $limit = $limit*10;
-       return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE=1 ORDER BY `DATE` DESC, `ID` DESC LIMIT $limit,10;");
+       return $result = $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER FROM `ARTICLES` WHERE TYPE=1 ORDER BY `DATE` DESC, `ID` DESC LIMIT $limit,10;");
      }
      function getAllArticlesLike($string){
-       return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE CONTENT LIKE '%$string%' OR TITLE LIKE '%$string%' ORDER BY `DATE` DESC, `ID` DESC;");
+       return $result = $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER FROM `ARTICLES` WHERE CONTENT LIKE '%$string%' OR TITLE LIKE '%$string%' ORDER BY `DATE` DESC, `ID` DESC;");
      }
      function getArticle($id){
        return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE `ID`=$id;");
      }
      function getArticleByTITLE($title){
-       return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE `TITLE`='$title';");
+       return $result = $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER,CONTENT,TYPE FROM `ARTICLES` WHERE `TITLE`='$title';");
      }
      function checkLogin($user, $pass){
        $result = $this->connection->query(" SELECT * FROM USERS
