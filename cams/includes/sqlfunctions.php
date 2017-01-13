@@ -20,6 +20,12 @@
      function getAllCategories(){
        return $result = $this->connection->query(" SELECT * FROM CATEGORIES;");
      }
+     function getParentCategories(){
+       return $result = $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID=0;");
+     }
+     function getChildCategories(){
+       return $result = $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID>0 ORDER BY PARENTID;");
+     }
      function getMenuPages(){
        return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE=0 ORDER BY `DATE` DESC, `ID` DESC;");
      }
@@ -27,7 +33,7 @@
        return $result = $this->connection->query(" SELECT * FROM `ARTICLES` ORDER BY `DATE` DESC, `ID` DESC;");
      }
      function getArticlesByCategory($category){
-       return $result = $this->connection->query(" SELECT * FROM ARTICLES, CATEGORIES WHERE ARTICLES.CATEGORIES = CATEGORIES.ID and CATEGORIES.TITLE = '$category';");
+       return $result = $this->connection->query(" SELECT ARTICLES.TITLE,ARTICLES.DATE,ARTICLES.IMAGEHEADER FROM ARTICLES, CATEGORIES WHERE ARTICLES.CATEGORIES = CATEGORIES.ID AND CATEGORIES.TITLE = '$category';");
      }
      function getAllArticlesIndex($limit = 0){
 			 $limit = $limit*10;

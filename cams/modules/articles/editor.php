@@ -15,7 +15,8 @@ require "../../includes/sqlfunctions.php";
 			$category="";
 			$date=date("Y-m-d");
 			$text="";
-			$categories = $database->getAllCategories();
+			$parentscategories = $database->getParentCategories();
+			$childcategories = $database->getChildCategories();
 			if(isset($_POST['ID'])){
 				$id=$_POST['ID'];
 				$result = $database->getArticle($id);
@@ -56,11 +57,14 @@ require "../../includes/sqlfunctions.php";
 					<label class="control-label col-md-2" for="articleCategory">Category</label>
 					<select class="col-md-6" type="number" id="articleCategory" name="articleCategory" placeholder="A category...">
 						<option value="0">-</option>
-						<? foreach ($categories as $cat){
-								$selected = "";
-								if($cat[ID]==$category) 
-									$selected = "selected";
-								echo "<option value='".$cat[ID]."'".$selected.">".$cat['TITLE']."</option>";
+						<? 
+						foreach ($parentscategories as $patcat){
+							echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
+							foreach ($childcategories as $chicat){
+								if($patcat['ID'] == $chicat['PARENTID']){
+									echo "<option value='".$chicat['ID']."'>|→".$chicat['TITLE']."</option>";
+								}
+							}
 						}
 						?>
 					</select>

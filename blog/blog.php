@@ -30,7 +30,8 @@ if (isset($database)){
 			<?} ?>
 			<?//show all posts
 			if ($articles)
-			foreach ($articles as $row){?>
+			foreach ($articles as $row){
+				?>
 				<h2 class="articleTitle"><?php echo $row['TITLE']?></h2>
 				<p class="articleDate"><span class="glyphicon glyphicon-time"></span><?php echo $row['DATE']?></p>
 				<img  class="img-responsive articleImage" src="<?echo $row['IMAGEHEADER']?>" alt="">

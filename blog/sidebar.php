@@ -9,15 +9,21 @@
 							<h4>Categories</h4>
 							<div class="row">
 									<div class="col-lg-6">
-											<ul class="list-unstyled">
+											<ul class="list-unstyled blogCategoryParent">
 											<?
 											$database = new Sqlconnection;//connect to database in order to extract users info
 											if (isset($database)){
-												$categories = $database->getAllCategories();
-												foreach ($categories as $cat){
-													echo "
-													<li><a href='/blog.php?category=".$cat['TITLE']."'>".$cat['TITLE']."</a>
-													</li>";
+												$parentscategories = $database->getParentCategories();
+												$childcategories = $database->getChildCategories();
+												foreach ($parentscategories as $patcat){
+													echo "<li><a href='/blog.php?category=".$patcat['TITLE']."'>".$patcat['TITLE']."</a></li>";
+													echo "<ul class='list-unstyled blogCategoryChild'>";
+													foreach ($childcategories as $chicat){
+														if($patcat['ID'] == $chicat['PARENTID']){
+															echo "<li><a href='/blog.php?category=".$chicat['TITLE']."'>".$chicat['TITLE']."</a></li>";
+														}
+													}
+													echo "</ul>";
 												}
 											}?>
 											</ul>

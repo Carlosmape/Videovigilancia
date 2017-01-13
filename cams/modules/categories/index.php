@@ -7,7 +7,8 @@ require "../../includes/sqlfunctions.php";
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
-			$categories = $database->getAllCategories();
+			$parentscategories = $database->getParentCategories();
+			$childcategories = $database->getChildCategories();
 			echo '<h1 class="page-header">Categories</h1>';?>
 				<form id="form" class="row" action="" method="post">
 					<div class="form-group col-md-2">
@@ -20,8 +21,14 @@ require "../../includes/sqlfunctions.php";
 						<label class="control-label col-md-4" for="categoryParent">Parent</label>
 						<select class="col-md-6 btn btn-default" type="number" id="categoryParent" name="categoryParent" placeholder="A category...">
 							<option value="">-</option>
-							<? foreach ($categories as $cat){
-									echo "<option value='".$cat[ID]."'>".$cat['TITLE']."</option>";
+							<? 
+							foreach ($parentscategories as $patcat){
+								echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
+								foreach ($childcategories as $chicat){
+									if($patcat['ID'] == $chicat['PARENTID']){
+										echo "<option value='".$chicat['ID']."'>|→".$chicat['TITLE']."</option>";
+									}
+								}
 							}
 							?>
 						</select>

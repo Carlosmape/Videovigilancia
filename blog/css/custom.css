@@ -1,0 +1,28 @@
+/*!
+ * Start CAMS - Blog Template
+ * Copyright 2017 Camape
+ */
+
+/*CUSTOMIZE YOUR BLOG INDEX HERE*/
+/*Blog elements*/
+	.form-control:focus{}
+	a{}
+	a:hover{}
+	/*Top bar*/
+		.blogNavigator{}
+		.blogMenu>li>.menuOption{}
+		.blogMenu>li>.menuOption:hover{}
+
+	/*Categories show on sidebar*/
+		.blogCategoryParent{}
+		.blogCategoryChild{}
+
+	/*Article elements*/
+		.articleTitle{}
+		.articleDate{}
+		.articleImage{}
+		.articleImage:hover{}
+		.articleReadMore{}
+		.articleReadMore:hover{}
+		.articleContent{}
+		.articleContent>img{}
