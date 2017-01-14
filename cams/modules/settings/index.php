@@ -19,6 +19,10 @@
 				<input class="form-control" type="text" id="title" name="Title" value="<? echo $userdefines['TITLE'];?>">
 				<label for="domain" class="sr-only">Domain</label>Domain
 				<input class="form-control" type="text" id="domain" name="Domain" value="<? echo $userdefines['HOST'];?>">
+				<label for="language" class="sr-only">Language</label>Language
+				<input class="form-control" type="text" id="language" name="Language" value="<? echo LANGUAGE?>">
+				<label for="description" class="sr-only">Description</label>Description
+				<input class="form-control" type="text" id="description" name="Description" value="<? echo DESCRIPTION?>">
 				<label for="facebook" class="sr-only">Facebook</label>Facebook
 				<input class="form-control" type="text" id="facebook" name="Facebook" value="<? echo FACEBOOK?>">
 			</div>

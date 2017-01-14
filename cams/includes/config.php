@@ -7,6 +7,8 @@ define('DBUSER','U2718717');
 define('DBNAME','DB2718717');
 define('DBPASS','grillo1acario1');
 define('FACEBOOK','https://www.facebook.com/camape.freelance/');
+define('LANGUAGE','ES');
+define('DESCRIPTION','Blog de un ingeniero informático freelance. Noticias, guías, consejos y tutoriales sobre el mundo de la informática y el trabajo de los informáticos');
 //DONT EDIT THIS ONLY WRITE ON WHITESPACES ABOVE
 
 date_default_timezone_set ("Europe/London");
