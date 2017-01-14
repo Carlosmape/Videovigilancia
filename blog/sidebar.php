@@ -6,7 +6,7 @@
 			<div class="col-md-3 sidebar">
 
 					<!-- Blog Categories Well -->
-					<div class="well blogWidget">
+					<div class="well blogWidget widgetRandomPost">
 						<div class="row">
 						<?
 						if (isset($database)){
@@ -14,7 +14,7 @@
 							foreach($latestposts as $post){
 								echo "<div class='col-xs-4 col-md-6'>
 												<a href='/blog.php?post=".urlencode($post['TITLE'])."'>
-													<img class='img-responsive articleImage' src='".$post['IMAGEHEADER']."' alt=''>
+													<img class='img-responsive widgetRandomPostImage' src='".$post['IMAGEHEADER']."' alt=''>
 												</a>
 											</div>";
 							}

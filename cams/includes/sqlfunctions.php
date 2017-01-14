@@ -33,7 +33,7 @@
        return $result = $this->connection->query(" SELECT * FROM `ARTICLES` ORDER BY `DATE` DESC, `ID` DESC;");
      }
      function getRandomArticles(){
-       return $result = $this->connection->query(" SELECT TITLE,IMAGEHEADER FROM ARTICLES WHERE TYPE=1 ORDER BY RAND() LIMIT 5;");
+       return $result = $this->connection->query(" SELECT TITLE,IMAGEHEADER FROM ARTICLES WHERE TYPE=1 ORDER BY RAND() LIMIT 6;");
      }
      function getArticlesByCategory($category){
        return $result = $this->connection->query(" SELECT ARTICLES.TITLE,ARTICLES.DATE,ARTICLES.IMAGEHEADER FROM ARTICLES, CATEGORIES WHERE ARTICLES.CATEGORIES = CATEGORIES.ID AND CATEGORIES.TITLE = '$category';");
