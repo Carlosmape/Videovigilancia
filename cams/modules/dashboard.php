@@ -3,6 +3,7 @@
 	 * Buttons functions are linked on /cams/includes/functions.js
 	 * If you want to add one button must keep examples in here
 	 * */
+	 require_once "includes/sqlfunctions.php"
 ?>
 
       <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -39,61 +40,60 @@
           </div>
           <div class="col-sm-9 col-md-10 main">
             <h1 class="page-header">Overview</h1>
+            <?
+							$database = new Sqlconnection();
+							if (isset($database))
+							{
+								?>
+								<div class="row placeholders">
+									<div class="col-xs-4 col-sm-4 placeholder">
+										<h2> <span class="glyphicon glyphicon-user"></span> Users - <span class="text-muted"><?echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h2>
+									</div>
+									<div class="col-xs-4 col-sm-4 placeholder">
+										<h2> <span class="glyphicon glyphicon-list-alt"></span> Articles - <span class="text-muted"><?echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h2>
+									</div>
+									<div class="col-xs-4 col-sm-4 placeholder">
+											<h2> <span class="glyphicon glyphicon-list"></span> Categories - <span class="text-muted"><?echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h2>
+									</div>
+								</div>
 
-            <div class="row placeholders">
-              <div class="col-xs-6 col-sm-3 placeholder">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" alt="Generic placeholder thumbnail" width="200" height="200">
-                <h4>Label</h4>
-                <span class="text-muted">Something else</span>
-              </div>
-              <div class="col-xs-6 col-sm-3 placeholder">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" alt="Generic placeholder thumbnail" width="200" height="200">
-                <h4>Label</h4>
-                <span class="text-muted">Something else</span>
-              </div>
-              <div class="col-xs-6 col-sm-3 placeholder">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" alt="Generic placeholder thumbnail" width="200" height="200">
-                <h4>Label</h4>
-                <span class="text-muted">Something else</span>
-              </div>
-              <div class="col-xs-6 col-sm-3 placeholder">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" alt="Generic placeholder thumbnail" width="200" height="200">
-                <h4>Label</h4>
-                <span class="text-muted">Something else</span>
-              </div>
-            </div>
-
-            <h2 class="sub-header">Section title</h2>
-            <div class="table-responsive">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Header</th>
-                    <th>Header</th>
-                    <th>Header</th>
-                    <th>Header</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1,001</td>
-                    <td>Lorem</td>
-                    <td>ipsum</td>
-                    <td>dolor</td>
-                    <td>sit</td>
-                  </tr>
-                  <tr>
-                    <td>1,002</td>
-                    <td>amet</td>
-                    <td>consectetur</td>
-                    <td>adipiscing</td>
-                    <td>elit</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <script src="includes/js/functions.js"></script>
+								<h2 class="sub-header">Blog menu</h2>
+								<div class="table-responsive">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Header</th>
+												<th>Header</th>
+												<th>Header</th>
+												<th>Header</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1,001</td>
+												<td>Lorem</td>
+												<td>ipsum</td>
+												<td>dolor</td>
+												<td>sit</td>
+											</tr>
+											<tr>
+												<td>1,002</td>
+												<td>amet</td>
+												<td>consectetur</td>
+												<td>adipiscing</td>
+												<td>elit</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<script src="includes/js/functions.js"></script>
+					 <?
+							}else{
+								echo "Error CAMS could not connect to your DATABASE";
+							}
+					?>
+							

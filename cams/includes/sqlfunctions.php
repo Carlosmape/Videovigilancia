@@ -13,12 +13,18 @@
          throw new Exception("Error CAMS could not connect to your DATABASE", 1);
        }
      }
-
+			
      function getAllUsers(){
        return $result = $this->connection->query(" SELECT * FROM USERS;");
      }
+     function countUsers(){
+       return $result = $this->connection->query(" SELECT COUNT(*) FROM USERS;");
+     }
      function getAllCategories(){
        return $result = $this->connection->query(" SELECT * FROM CATEGORIES;");
+     }
+     function countCategories(){
+       return $result = $this->connection->query(" SELECT COUNT(*) FROM CATEGORIES;");
      }
      function getParentCategories(){
        return $result = $this->connection->query(" SELECT * FROM CATEGORIES WHERE PARENTID=0;");
@@ -31,6 +37,9 @@
      }
      function getAllArticles(){
        return $result = $this->connection->query(" SELECT * FROM `ARTICLES` ORDER BY `DATE` DESC, `ID` DESC;");
+     }
+     function countArticles(){
+       return $result = $this->connection->query(" SELECT COUNT(*) FROM ARTICLES;");
      }
      function getRandomArticles(){
        return $result = $this->connection->query(" SELECT TITLE,IMAGEHEADER FROM ARTICLES WHERE TYPE=1 ORDER BY RAND() LIMIT 6;");

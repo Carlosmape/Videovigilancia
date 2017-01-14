@@ -23,6 +23,8 @@
 				<input class="form-control" type="text" id="language" name="Language" value="<? echo LANGUAGE?>">
 				<label for="description" class="sr-only">Description</label>Description
 				<input class="form-control" type="text" id="description" name="Description" value="<? echo DESCRIPTION?>">
+				<label for="Ganalyticsid" class="sr-only">Google Analytics ID</label>Google Analytics ID
+				<input class="form-control" type="text" id="Ganalyticsid" name="Ganalyticsid" value="<? echo GANALYTICSID?>">
 				<label for="facebook" class="sr-only">Facebook</label>Facebook
 				<input class="form-control" type="text" id="facebook" name="Facebook" value="<? echo FACEBOOK?>">
 			</div>
@@ -39,7 +41,7 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label for="save" class="sr-only">Submit</label>
-				<input id="submitsettings" class="form-control btn btn-default" type="button"  name="submit" value="Save">
+				<input id="submitsettings" class="form-control btn btn-info" type="button"  name="submit" value="Save">
 			</div>
 			<script>
 				$("input#submitsettings").click(function() {

@@ -21,6 +21,7 @@ if (isset($_POST)){
 			"/DBPASS','.*'/",
 			"/FACEBOOK','.*'/",
 			"/LANGUAGE','.*'/",
+			"/GANALYTICSID','.*'/",
 			"/DESCRIPTION','.*'/"
 		);
 		$replaceW = array(
@@ -32,6 +33,7 @@ if (isset($_POST)){
 		"DBPASS','".$_POST['Password']."'",
 		"FACEBOOK','".$_POST['Facebook']."'",
 		"LANGUAGE','".$_POST['Language']."'",
+		"GANALYTICSID','".$_POST['Ganalyticsid']."'",
 		"DESCRIPTION','".$_POST['Description']."'");
 		
 		$settings = preg_replace($searchF, $replaceW, $settings);
