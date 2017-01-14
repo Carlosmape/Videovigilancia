@@ -11,9 +11,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<?echo DESCRIPTION?>">
-    <meta name="author" content="CAMS by Camape">
+    <meta name=”keywords” content="Blog,informática,camape,freelance,desarrollador" />
+    <meta name="author" content="CAMS">
+    
 
-    <title><?php echo TITLE;?>|Blog</title>
+    <title><?php echo TITLE;?>|<?
+			if(isset($_GET['post']))
+				echo urldecode($_GET['post']);
+			else
+				echo "Blog";
+		?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="cams/includes/css/bootstrap.min.css" rel="stylesheet">

@@ -9,7 +9,15 @@
 			}else{
 				while($row = mysqli_fetch_array($article)){
 ?>
-            <!-- Blog Post Content Column -->
+					<!-- Open Graph metadata -->
+          <meta property="og:title" content="<?echo TITLE?>|<?$row['TITLE']?>" />
+          <meta property="og:site_name" content="<?echo TITLE?>" />
+					<meta property="og:type" content="article" />
+					<meta property="article:published_time" content="<?echo $row['DATE']?>" />
+					<meta property="og:url" content="<?echo DOMAIN?>/blog.php?post=<?echo urlencode($row['TITLE'])?>" />
+					<meta property="og:image" content="<?$row['IMAGEHEADER']?>" />
+					<meta property="og:locale" content="<?echo LANGUAGE?>" />
+					<!-- Blog Post Content Column -->
           <div class="container">
             <div class="col-md-9">
 
