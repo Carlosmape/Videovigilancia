@@ -10,7 +10,7 @@
 						<div class="row">
 						<?
 						if (isset($database)){
-							$latestposts = $database->getAllArticlesIndex();
+							$latestposts = $database->getRandomArticles();
 							foreach($latestposts as $post){
 								echo "<div class='col-xs-4 col-md-6'>
 												<a href='/blog.php?post=".urlencode($post['TITLE'])."'>
