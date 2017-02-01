@@ -59,10 +59,20 @@ require "../../includes/sqlfunctions.php";
 						<option value="0">-</option>
 						<? 
 						foreach ($parentscategories as $patcat){
-							echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
+							?>
+								<option value='<?echo $patcat['ID']?>' <?
+									if ($category==$patcat['ID'])
+										echo "selected";
+							?>><?echo $patcat['TITLE']?></option>
+							<?
 							foreach ($childcategories as $chicat){
 								if($patcat['ID'] == $chicat['PARENTID']){
-									echo "<option value='".$chicat['ID']."'>|→".$chicat['TITLE']."</option>";
+								?>
+									<option value='<?echo $chicat['ID']?>' <?
+										if ($category==$chicat['ID'])
+											echo "selected";
+								?>><?echo $chicat['TITLE']?></option> 
+							<?
 								}
 							}
 						}

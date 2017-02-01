@@ -36,6 +36,7 @@
               <li><a id="users" href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a></li>
               <li><a id="articles" href="#"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Articles</a></li>
               <li><a id="categories" href="#"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Categories</a></li>
+              <li><a id="files" href="#"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Files</a></li>
             </ul>
           </div>
           <div class="col-sm-9 col-md-10 main">

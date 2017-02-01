@@ -41,7 +41,7 @@ require "../../includes/sqlfunctions.php";
 			//first open table head and body putting as columns as you need
 			echo '
 			<div class="table-responsive">
-				<table class="table table-striped">	
+				<table class="table table-striped table-hover">	
 					<thead>
 						<tr>
 							<th>Id</th>
@@ -53,16 +53,32 @@ require "../../includes/sqlfunctions.php";
 					</thead>
 					<tbody>
 					';
-							foreach ($categories as $row){?>
-								<tr>
-									<td id="rowID<?php echo $row['ID']?>" class="rowID"><?php echo $row['ID']?></td>
-									<td id="rowParent<?php echo $row['ID']?>" class="rowParent"><?php echo $row['PARENTID']?></td>
-									<td id="rowTitle<?php echo $row['ID']?>" class="rowTitle"><?php echo $row['TITLE']?></td>
-									<td><a href="#" class="editCategory" id="editCategory<?php echo $row['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-									<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $row['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
-									</td>
-								</tr>
-						<?	}
+							foreach ($parentscategories as $patcat){
+								?>
+									<tr>
+										<td id="rowID<?php echo $patcat['ID']?>" class="rowID"><?php echo $patcat['ID']?></td>
+										<td id="rowParent<?php echo $patcat['ID']?>" class="rowParent"><?php echo $patcat['PARENTID']?></td>
+										<td id="rowTitle<?php echo $patcat['ID']?>" class="rowTitle"><?php echo $patcat['TITLE']?></td>
+										<td><a href="#" class="editCategory" id="editCategory<?php echo $patcat['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+										<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $patcat['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
+										</td>
+									</tr> 
+								<?
+								foreach ($childcategories as $chicat){
+									if($patcat['ID'] == $chicat['PARENTID']){
+										?>
+											<tr class="active">
+												<td id="rowID<?php echo $chicat['ID']?>" class="rowID">- <?php echo $chicat['ID']?></td>
+												<td id="rowParent<?php echo $chicat['ID']?>" class="rowParent"><?php echo $chicat['PARENTID']?></td>
+												<td id="rowTitle<?php echo $chicat['ID']?>" class="rowTitle"><?php echo $chicat['TITLE']?></td>
+												<td><a href="#" class="editCategory" id="editCategory<?php echo $chicat['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+												<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $chicat['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
+												</td>
+											</tr> 
+										<?
+									}
+								}
+							}
 						echo '
 					</tbody>
 				</table>

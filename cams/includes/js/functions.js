@@ -59,4 +59,18 @@ window.onload = function() {
  
       });
     });
+  $("a#files").click(function(){
+        $.ajax({
+          type: "post",
+          url: "modules/files/index.php",
+          data: $(this).val(),
+          success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
+            // log a message to the console
+             $(".main").empty();
+             $(".main").html(response);
+
+          }
+ 
+      });
+    });
 };
