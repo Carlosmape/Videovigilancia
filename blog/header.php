@@ -3,19 +3,19 @@
 	require_once "cams/includes/sqlfunctions.php";
 ?>
 <!DOCTYPE html>
-<html lang="<?echo LANGUAGE?>">
+<html lang="<?php echo LANGUAGE?>">
 
 <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<?echo DESCRIPTION?>">
+    <meta name="description" content="<?php echo DESCRIPTION?>">
     <meta name=”keywords” content="Blog,informática,camape,freelance,desarrollador" />
     <meta name="author" content="CAMS">
     
 
-    <title><?php echo TITLE;?>|<?
+    <title><?php echo TITLE;?>|<?php
 			if(isset($_GET['post']))
 				echo urldecode($_GET['post']);
 			else
@@ -61,7 +61,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<? echo HOST;?>"><?php echo TITLE;?></a>
+                <a class="navbar-brand" href="<?php echo HOST;?>"><?php echo TITLE;?></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -77,16 +77,16 @@
 									</div>
 								</form><!-- /search form -->
                 <ul class="blogMenu nav navbar-nav navbar-right">
-									<?
+									<?php 
 									$database = new Sqlconnection;//connect to database in order to extract users info
 									if (isset($database))
 										$menu = $database->getMenuPages();
 									if (isset($menu))
 										foreach($menu as $entry){?>
                     <li>
-                        <a class="menuOption" href="/blog.php?post=<?echo $entry['TITLE']?>"><?echo $entry['TITLE']?></a>
+                        <a class="menuOption" href="/blog.php?post=<?php echo $entry['TITLE']?>"><?echo $entry['TITLE']?></a>
                     </li>
-									<?}?>
+									<?php }?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -4,7 +4,7 @@
         <!-- Footer -->
         <footer>
 					<div class="col-lg-10">
-						<p>Copyright <?php echo date('Y')?> &copy; <?echo TITLE?></p>
+						<p>Copyright <?echo date('Y')?> &copy; <?echo TITLE?></p>
 					</div>
 					<!-- /.col-lg-12 -->
 					<div class="col-lg-2">
@@ -27,7 +27,7 @@
 			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-			ga('create', '<?php echo GANALYTICSID?>', 'auto');
+			ga('create', '<?echo GANALYTICSID?>', 'auto');
 			ga('send', 'pageview');
 
 		</script>
