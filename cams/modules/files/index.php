@@ -34,7 +34,21 @@ require "../../includes/sqlfunctions.php";
 					';
 					$arrayFiles  = scandir($directorio);
 							foreach ($arrayFiles as $row){
-								if ($row!='.' && $row!='..'){ ?>
+								if (is_dir($directorio.'/'.$row) && $row!='.' && $row!='..'){
+									$subfiles = scandir($directorio.'/'.$row);
+									$subdirectorio = $row;
+									foreach($subfiles as $row){
+										if ($row!='.' && $row!='..'){ ?>
+											<tr>
+												<td class="fileName"><?php echo $subdirectorio."/".$row?></td>
+												<td><a href="<?echo HOST.'/blog/uploads/'.$subdirectorio.'/'.$row;?>" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+												<td><a href="#" class="delete deleteFile" id="<?php echo $subdirectorio.'/'.$row?>"><span class="glyphicon glyphicon-trash"></span></a>
+												</td>
+											</tr> <?
+										}
+									}
+								}
+								else if ($row!='.' && $row!='..'){ ?>
 									<tr>
 										<td class="fileName"><?php echo $row?></td>
 										<td><a href="<?echo HOST.'/blog/uploads/'.$row;?>" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a></td>

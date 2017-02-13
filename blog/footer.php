@@ -15,7 +15,7 @@
     </div>
     <!-- /.container -->
     <!-- jQuery -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="cams/includes/js/jquery-3.1.1.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="cams/includes/js/bootstrap.min.js"></script>
