@@ -21,8 +21,8 @@
             <ul class="nav navbar-nav navbar-right">
               <li><a href="<? echo HOST.'/cams';?>"></a></li>
               <li><a id="settings" href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span><? echo " ".$_SESSION['connection']->user?></a></li>
-              <li><a href="<? echo HOST.'/cams/modules/logout.php';?>"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo " ".$_SESSION['connection']->user?></a></li>
+              <li><a href="<?php echo HOST.'/cams/modules/logout.php';?>"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
             </ul>
           </div>
         </div>
@@ -41,20 +41,20 @@
           </div>
           <div class="col-sm-9 col-md-10 main">
             <h1 class="page-header">Overview</h1>
-            <?
+            <?php
 							$database = new Sqlconnection();
 							if (isset($database))
 							{
 								?>
 								<div class="row placeholders">
 									<div class="col-xs-4 col-sm-4 placeholder">
-										<h2> <span class="glyphicon glyphicon-user"></span> Users - <span class="text-muted"><?echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h2>
+										<h2> <span class="glyphicon glyphicon-user"></span> Users - <span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h2>
 									</div>
 									<div class="col-xs-4 col-sm-4 placeholder">
-										<h2> <span class="glyphicon glyphicon-list-alt"></span> Articles - <span class="text-muted"><?echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h2>
+										<h2> <span class="glyphicon glyphicon-list-alt"></span> Articles - <span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h2>
 									</div>
 									<div class="col-xs-4 col-sm-4 placeholder">
-											<h2> <span class="glyphicon glyphicon-list"></span> Categories - <span class="text-muted"><?echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h2>
+											<h2> <span class="glyphicon glyphicon-list"></span> Categories - <span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h2>
 									</div>
 								</div>
 
@@ -92,7 +92,7 @@
 						</div>
 					</div>
 					<script src="includes/js/functions.js"></script>
-					 <?
+					 <?php
 							}else{
 								echo "Error CAMS could not connect to your DATABASE";
 							}
