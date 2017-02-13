@@ -8,7 +8,7 @@
 					<!-- Blog Categories Well -->
 					<div class="well blogWidget widgetRandomPost">
 						<div class="row">
-						<?
+						<?php
 						if (isset($database)){
 							$latestposts = $database->getRandomArticles();
 							foreach($latestposts as $post){
@@ -26,7 +26,7 @@
 							<div class="row">
 									<div class="col-lg-6">
 											<ul class="list-unstyled blogCategoryParent">
-											<?
+											<?php
 											if (isset($database)){
 												$parentscategories = $database->getParentCategories();
 												$childcategories = $database->getChildCategories();

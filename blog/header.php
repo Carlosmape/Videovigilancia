@@ -84,7 +84,7 @@
 									if (isset($menu))
 										foreach($menu as $entry){?>
                     <li>
-                        <a class="menuOption" href="/blog.php?post=<?php echo $entry['TITLE']?>"><?echo $entry['TITLE']?></a>
+                        <a class="menuOption" href="/blog.php?post=<?php echo $entry['TITLE']?>"><?php echo $entry['TITLE']?></a>
                     </li>
 									<?php }?>
                 </ul>

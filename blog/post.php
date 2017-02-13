@@ -10,13 +10,13 @@
 				while($row = mysqli_fetch_array($article)){
 ?>
 					<!-- Open Graph metadata -->
-          <meta property="og:title" content="<?echo TITLE?>|<?$row['TITLE']?>" />
-          <meta property="og:site_name" content="<?echo TITLE?>" />
+          <meta property="og:title" content="<?php echo TITLE?>|<?$row['TITLE']?>" />
+          <meta property="og:site_name" content="<?php echo TITLE?>" />
 					<meta property="og:type" content="article" />
-					<meta property="article:published_time" content="<?echo $row['DATE']?>" />
-					<meta property="og:url" content="<?echo DOMAIN?>/blog.php?post=<?echo urlencode($row['TITLE'])?>" />
-					<meta property="og:image" content="<?$row['IMAGEHEADER']?>" />
-					<meta property="og:locale" content="<?echo LANGUAGE?>" />
+					<meta property="article:published_time" content="<?php echo $row['DATE']?>" />
+					<meta property="og:url" content="<?php echo DOMAIN?>/blog.php?post=<?php echo urlencode($row['TITLE'])?>" />
+					<meta property="og:image" content="<?php $row['IMAGEHEADER']?>" />
+					<meta property="og:locale" content="<?php echo LANGUAGE?>" />
 					<!-- Blog Post Content Column -->
           <div class="container">
             <div class="col-md-9">
@@ -24,11 +24,11 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1 class="articleTitle"><? echo $row['TITLE'];?></h1>
+                <h1 class="articleTitle"><?php echo $row['TITLE'];?></h1>
                 <?php
 								if ($row['TYPE']!=0){?>
-									<p class="articleDate"><span class="glyphicon glyphicon-time"></span><?echo $row['DATE']?></p>
-								<?}?>
+									<p class="articleDate"><span class="glyphicon glyphicon-time"></span><?php echo $row['DATE']?></p>
+								<?php }?>
                 <!-- Preview Image -->
                 <img class="img-responsive articleImage" src="<?php echo $row['IMAGEHEADER']?>" alt="">
 
@@ -41,12 +41,12 @@
                 <!-- Blog Comments -->
                 <!-- Comments Form -->
                 <div class="well">
-									<div class="fb-comments" data-width="100%" data-href="<?echo FACEBOOK?>" data-numposts="5"></div>
+									<div class="fb-comments" data-width="100%" data-href="<?php echo FACEBOOK?>" data-numposts="5"></div>
                 </div>
 
                 <hr>
             </div>
-<?			}//end while
+<?php			}//end while
 			}
 		}else{
 			echo "Error CAMS could not connect to your DATABASE";
