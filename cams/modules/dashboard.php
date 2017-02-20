@@ -19,7 +19,7 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="<? echo HOST.'/cams';?>"></a></li>
+              <li><a href="<?php echo HOST.'/cams';?>"></a></li>
               <li><a id="settings" href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
               <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo " ".$_SESSION['connection']->user?></a></li>
               <li><a href="<?php echo HOST.'/cams/modules/logout.php';?>"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>

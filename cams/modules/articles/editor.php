@@ -32,7 +32,7 @@ require "../../includes/sqlfunctions.php";
 			?>
 			<div class="row"></div>
 			<form action="" id="article">
-				<input type="text" name="articleID" value="<? echo $id;?>" hidden>
+				<input type="text" name="articleID" value="<?php echo $id;?>" hidden>
 				<div class="form-group col-md-6">
 					<label class="control-label col-md-2" for="articleTitle">Title</label>
 					<input class="col-md-6"type="text" id="articleTitle" name="articleTitle" value="<?php echo $title?>" placeholder="A title for your article...">
@@ -57,7 +57,7 @@ require "../../includes/sqlfunctions.php";
 					<label class="control-label col-md-2" for="articleCategory">Category</label>
 					<select class="col-md-6" type="number" id="articleCategory" name="articleCategory" placeholder="A category...">
 						<option value="0">-</option>
-						<? 
+						<?php 
 						foreach ($parentscategories as $patcat){
 							?>
 								<option value='<?echo $patcat['ID']?>' <?
@@ -80,7 +80,7 @@ require "../../includes/sqlfunctions.php";
 					</select>
 					<div class="row"></div>
 					<label class="control-label col-md-2" for="articleDate">Date</label>
-					<input class="col-md-6" type='date' id='datetimepicker4' name="articleDate" value="<? echo $date?>">
+					<input class="col-md-6" type='date' id='datetimepicker4' name="articleDate" value="<?php echo $date?>">
 				</div>
 				<div class="form-group col-md-12">
 					<label class="control-label col-md-2" for="">Header image</label>

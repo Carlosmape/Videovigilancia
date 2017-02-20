@@ -21,7 +21,7 @@ require "../../includes/sqlfunctions.php";
 						<label class="control-label col-md-4" for="categoryParent">Parent</label>
 						<select class="col-md-6 btn btn-default" type="number" id="categoryParent" name="categoryParent" placeholder="A category...">
 							<option value="">-</option>
-							<? 
+							<?php 
 							foreach ($parentscategories as $patcat){
 								echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
 								foreach ($childcategories as $chicat){
@@ -113,7 +113,7 @@ require "../../includes/sqlfunctions.php";
 						<label class="control-label col-sm-2" for="email">Parent:</label>
 						<select class="col-md-6 btn btn-default" type="number" id="editParent" name="editParent" placeholder="A category...">
 							<option value="">-</option>
-							<? foreach ($categories as $cat){
+							<?php foreach ($categories as $cat){
 									echo "<option value='".$cat[ID]."'>".$cat['TITLE']."</option>";
 							}
 							?>
