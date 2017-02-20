@@ -2,7 +2,7 @@
 //this stuff is for configurate your site. ONLY WRITE ON WHITESPACES BELOW
 define('TITLE','CAMS');
 define('HOST','http://localhost');//
-define('DBHOST','http://localhost');
+define('DBHOST','127.0.0.1');
 define('DBUSER','cams');
 define('DBNAME','cams');
 define('DBPASS','password');
