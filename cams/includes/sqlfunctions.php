@@ -10,7 +10,11 @@
      function __construct(){
        $this->connection = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
        if (!$this->connection) {
-         throw new Exception("Error CAMS could not connect to your DATABASE", 1);
+         throw new Exception(
+			"Error CAMS: Unable to connect to MySQL.".PHP_EOL.
+			"Debugging errno: ".mysqli_connect_errno().PHP_EOL.
+			"Debugging error: ".mysqli_connect_error().PHP_EOL
+			, 1);
        }
      }
 			
