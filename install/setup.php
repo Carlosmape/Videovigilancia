@@ -68,49 +68,110 @@ if (isset($_POST['setup'])){
 	//SECOND PIT 
 	//CREATE TABLES TO ADMINISTRATE CAMS
 	//
+	$connection = new mysqli($_POST['Host'], $_POST['User'], $_POST['Password']);
+    if (!$connection) {
+      echo "Error CAMS: Unable to connect to MySQL. Debugging errno: ".mysqli_connect_errno()."Debugging error: ".mysqli_connect_error();
+    }else{
+		if ($result = mysqli_query($connection, "CREATE DATABASE IF NOT EXISTS `".$_POST['Databasename']."`;")){
+			if($result = $connection->select_db($_POST['Databasename'])){
+				if(mysqli_query($connection,
+					"CREATE TABLE IF NOT EXISTS USERS(
+					`ID` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+					`USER` VARCHAR(32),
+					`MAIL` VARCHAR(32),
+					`PASSWORD` VARCHAR(64),
+					`TYPE` INT(11),
+					UNIQUE (`USER`,`MAIL`),
+					CHECK (TYPE BETWEEN 0 AND 1));") 
+				&& mysqli_query($connection,
+					"CREATE TABLE IF NOT EXISTS `CATEGORIES`(
+					`ID` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+					`PARENTID` INT(11),
+					`TITLE` VARCHAR(32) UNIQUE);") 
+				&& mysqli_query($connection,
+					"CREATE TABLE IF NOT EXISTS `ARTICLES`(
+					`ID` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+					`TITLE` VARCHAR(96) UNIQUE,
+					`TYPE` INT(11),
+					`CATEGORIES` INT(11),
+					`DATE` DATE,
+					`CONTENT`	TEXT,
+					`IMAGEHEADER` TEXT,
+					CHECK (TYPE BETWEEN 0 AND 2));")){
+					echo "Tables created.";
+					if (mysqli_query($connection,
+						"INSERT INTO USERS (`USER`,`MAIL`,`PASSWORD`, `TYPE`)
+						VALUES ('admin','example@mail.com','e3afed0047b08059d0fada10f400c1e5','0');"))
+					{	
+						?>
+						<?php 
+								require_once "../cams/includes/config.php";
+						?>
+						<!DOCTYPE html>
+						<html lang="en">
+						  <head>
+							<meta charset="utf-8">
+							<meta http-equiv="X-UA-Compatible" content="IE=edge">
+							<meta name="viewport" content="width=device-width, initial-scale=1">
+							<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+							<meta name="description" content="This page guides you throught CAMS setup and configuration">
+							<meta name="author" content="Camape">
 
-	require "../cams/includes/sqlfunctions.php";
-	$database = new Sqlconnection;//connect to database in order to create some tables and users
-	if (isset($database)){
-		if($database->connection->mysqli_query(
-			"CREATE TABLE `USERS`(
-			`ID` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-			`USER` VARCHAR(32),
-			`MAIL` VARCHAR(32),
-			`PASSWORD` VARCHAR(64),
-			`TYPE` INT(11),
-			UNIQUE (`USER`,`MAIL`),
-			CHECK (TYPE BETWEEN 0 AND 1));") 
-		&& $database->connection->mysqli_query(
-			"CREATE TABLE `CATEGORIES`(
-			`ID` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-			`PARENTID` INT(11),
-			`TITLE` VARCHAR(32) UNIQUE);") 
-		&& $database->connection->mysqli_query(
-			"CREATE TABLE `ARTICLES`(
-			`ID` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-			`TITLE` VARCHAR(96) UNIQUE,
-			`TYPE` INT(11),
-			`CATEGORIES` INT(11),
-			`DATE` DATE,
-			`CONTENT`	TEXT,
-			`IMAGEHEADER` TEXT,
-			CHECK (TYPE BETWEEN 0 AND 2));"))
-		{
-			echo "Tables created.";
-			if ($database->connection->mysqli_query(
-				"INSERT INTO `USERS` (`ID`,`USER`,`MAIL`,`PASSWORD`, `TYPE`)
-				VALUES ('','Admin','example@mail.com','e3afed0047b08059d0fada10f400c1e5','0');"))
-			{
-				echo "Good! your site has been setting up";
+							<title>CAMS installation page</title>
+
+							<!-- Bootstrap core CSS -->
+							<link href="../cams/includes/css/bootstrap.min.css" rel="stylesheet">
+
+							<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+							<!--[if lt IE 9]>
+							  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+							  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+							<![endif]-->
+						  </head>
+
+						  <body>
+
+							<div class="container">
+							  <div class="header clearfix">
+								<h3 class="text-muted">Simple and flexible</h3>
+							  </div>
+
+							  <div class="jumbotron alert alert-success" role="alert">
+								<h1>CAMS <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span></h1>
+								<p class="lead">Good! installation done.</p>
+								<p class="lead">You can login with "admin" as user and password. We recomend you to create a new user and era admin one.</p>
+								<p class="lead">Go <a href="../cams">login page</a></p>
+							  </div>
+										
+							  <footer class="footer">
+								<p>&copy; 2017 Camape</p>
+							  </footer>
+
+							</div> <!-- /container -->
+						  </body>
+						</html>
+						<?php 
+						//
+						//FINAL STEP
+						//TIME TO REMOVE INSTALLATION FILES IN ORDER TO KEEP SYSTEM SECURITY
+						//
+						unlink("index.php");
+						unlink("setup.php");
+						rmdir("../install");
+					}else{
+						throw new Exception("Error CAMS: Could not create initial user admin try go /cams/ and login using admin, admin",1);
+					}
+
+				}else{
+					throw new Exception("Error CAMS: Could not create necesary tables",1);
+				}
+			}else{
+				throw new Exception("Error CAMS: Could not select your database ".$_POST['Databasename'].". ".$result,1);
 			}
 
 		}else{
-			throw new Exception("Error CAMS: Could not create necesary tables",1);
+			throw new Exception("Error CAMS: Could create or check your database ".$_POST['Databasename'].". ".$result,1);
 		}
-
-	
-	}else{
 	}
 }
 ?>

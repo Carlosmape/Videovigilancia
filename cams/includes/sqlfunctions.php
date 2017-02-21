@@ -8,6 +8,7 @@
      var $connection;
 
      function __construct(){
+		 //first of all comprobate that database exist if not, try to create
        $this->connection = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
        if (!$this->connection) {
          echo "Error CAMS: Unable to connect to MySQL. Debugging errno: ".mysqli_connect_errno()."Debugging error: ".mysqli_connect_error();

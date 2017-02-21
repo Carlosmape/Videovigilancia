@@ -3,11 +3,11 @@
 define('TITLE','CAMS');
 define('HOST','http://localhost');//
 define('DBHOST','127.0.0.1');
-define('DBUSER','cams');
+define('DBUSER','root');
 define('DBNAME','cams');
-define('DBPASS','password');
+define('DBPASS','root');
 define('FACEBOOK','');
-define('LANGUAGE','ES');
+define('LANGUAGE','EN');
 define('DESCRIPTION','');
 define('GANALYTICSID','');
 //DONT EDIT THIS ONLY WRITE ON WHITESPACES ABOVE
