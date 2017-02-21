@@ -62,7 +62,7 @@
 					<input class="form-control" type="text" id="dbpassword" name="Password" value="<?php echo DBPASS;?>">
 				</div>
 				<div class="row"></div>
-        <p><input class="btn btn-lg btn-success" type="submit" value="Set up"></p>
+        <p><input class="btn btn-lg btn-success" name="setup" type="submit" value="Set up"></p>
       </div>
 
       <footer class="footer">
