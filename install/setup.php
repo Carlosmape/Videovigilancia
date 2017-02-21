@@ -10,7 +10,7 @@ if (isset($_POST['setup'])){
 	//
 	
 	echo ('Saving configuration to config.php');
-	$filename=$_SERVER['DOCUMENT_ROOT']."/cams/includes/config.php";
+	$filename="../cams/includes/config.php";
 	$file = fopen($filename, "r+");
 	if (!$file) {
 		echo('Cant open cams/includes/config.php to read');
