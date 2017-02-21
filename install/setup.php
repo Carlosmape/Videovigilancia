@@ -10,7 +10,7 @@ if (isset($_POST['setup'])){
 	//
 	
 	echo ('Saving configuration to config.php');
-	$filename="../cams/includes/config.php";
+	$filename=$_SERVER['DOCUMENT_ROOT']."/cams/includes/config.php";
 	$file = fopen($filename, "r+");
 	if (!$file) {
 		echo('Cant open cams/includes/config.php to read');
@@ -69,7 +69,7 @@ if (isset($_POST['setup'])){
 	//CREATE TABLES TO ADMINISTRATE CAMS
 	//
 
-	require_once "cams/includes/sqlfunctions.php";
+	require "../cams/includes/sqlfunctions.php";
 	$database = new Sqlconnection;//connect to database in order to create some tables and users
 	if (isset($database)){
 		if($database->connection->mysqli_query(
