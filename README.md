@@ -1,4 +1,4 @@
-#CAMS is a light and simple cms  
+#CAMS is a light and flexible CMS  
 [![Build Status](https://travis-ci.org/Carlosmape/CAMS.svg?branch=master)](https://travis-ci.org/Carlosmape/CAMS) Diferent PHP version status
         
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)]
