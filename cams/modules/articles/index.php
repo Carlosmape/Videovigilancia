@@ -71,6 +71,6 @@ require "../../includes/sqlfunctions.php";
 				</div>
 			</div>
 		</div>
-		<?
+		<?php
 	}
 ?>

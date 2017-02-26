@@ -63,7 +63,7 @@ require "../../includes/sqlfunctions.php";
 										<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $patcat['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
 										</td>
 									</tr> 
-								<?
+								<?php 
 								foreach ($childcategories as $chicat){
 									if($patcat['ID'] == $chicat['PARENTID']){
 										?>
@@ -75,7 +75,7 @@ require "../../includes/sqlfunctions.php";
 												<td><a href="#" class="delete deleteCategory" id="deleteCaegory<?php echo $chicat['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
 												</td>
 											</tr> 
-										<?
+										<?php
 									}
 								}
 							}

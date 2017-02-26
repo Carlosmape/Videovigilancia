@@ -41,20 +41,20 @@ require "../../includes/sqlfunctions.php";
 										if ($row!='.' && $row!='..'){ ?>
 											<tr>
 												<td class="fileName"><?php echo $subdirectorio."/".$row?></td>
-												<td><a href="<?echo HOST.'/blog/uploads/'.$subdirectorio.'/'.$row;?>" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+												<td><a href="<?php echo HOST.'/blog/uploads/'.$subdirectorio.'/'.$row;?>" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 												<td><a href="#" class="delete deleteFile" id="<?php echo $subdirectorio.'/'.$row?>"><span class="glyphicon glyphicon-trash"></span></a>
 												</td>
-											</tr> <?
+											</tr> <?php
 										}
 									}
 								}
 								else if ($row!='.' && $row!='..'){ ?>
 									<tr>
 										<td class="fileName"><?php echo $row?></td>
-										<td><a href="<?echo HOST.'/blog/uploads/'.$row;?>" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+										<td><a href="<?php echo HOST.'/blog/uploads/'.$row;?>" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 										<td><a href="#" class="delete deleteFile" id="<?php echo $row?>"><span class="glyphicon glyphicon-trash"></span></a>
 										</td>
-									</tr> <?
+									</tr> <?php
 								}
 							}
 						echo '
