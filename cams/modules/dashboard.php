@@ -40,7 +40,19 @@
             </ul>
           </div>
           <div class="col-sm-9 col-md-10 main">
-            <h1 class="page-header">Overview</h1>
+            <h1 class="page-header">Live</h1>
+            <div class="row liveview">
+				<div class="col-md-4">
+				  <img src="<?php echo HOST?>:8081"></img>
+				</div>
+				<div class="col-md-4">
+				  <img src="<?php echo HOST?>:8082"></img>
+				</div>
+				<div class="col-md-4">
+				  <iframe class="thumbnail" src="<?php echo HOST?>:8080"></iframe>
+				</div>
+            </div>
+            <h1 class="page-header">Blog</h1>
             <?php
 							$database = new Sqlconnection();
 							if (isset($database))
