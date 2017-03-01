@@ -39,15 +39,15 @@ require "../../includes/sqlfunctions.php";
 					<div class="row"></div>
 					<label class="control-label col-md-2" for="articleType">Type</label>
 					<select class="col-md-6" type="number" id="articleType" name="articleType">
-						<option value="0" <?
+						<option value="0" <?php
 							if ($type==0)
 								echo "selected";
 						?>>Static page (Menu)</option>
-						<option value="1" <?
+						<option value="1" <?php
 							if ($type==1)
 								echo "selected";
 						?>>Blog article</option>
-						<option value="1" <?
+						<option value="1" <?php
 							if ($type==2)
 								echo "selected";
 						?>>Static page (Menu hidden)</option>
@@ -60,19 +60,19 @@ require "../../includes/sqlfunctions.php";
 						<?php 
 						foreach ($parentscategories as $patcat){
 							?>
-								<option value='<?echo $patcat['ID']?>' <?
+								<option value='<?echo $patcat['ID']?>' <?php
 									if ($category==$patcat['ID'])
 										echo "selected";
-							?>><?echo $patcat['TITLE']?></option>
-							<?
+							?>><?php echo $patcat['TITLE']?></option>
+							<?php
 							foreach ($childcategories as $chicat){
 								if($patcat['ID'] == $chicat['PARENTID']){
 								?>
-									<option value='<?echo $chicat['ID']?>' <?
+									<option value='<?echo $chicat['ID']?>' <?php
 										if ($category==$chicat['ID'])
 											echo "selected";
-								?>><?echo $chicat['TITLE']?></option> 
-							<?
+								?>><?php echo $chicat['TITLE']?></option> 
+							<?php 
 								}
 							}
 						}
@@ -84,7 +84,7 @@ require "../../includes/sqlfunctions.php";
 				</div>
 				<div class="form-group col-md-12">
 					<label class="control-label col-md-2" for="">Header image</label>
-					<input id="articleImage" type="text" name="articleImage" placeholder="Path to a image..." value=<?echo $image?>>
+					<input id="articleImage" type="text" name="articleImage" placeholder="Path to a image..." value=<?php echo $image?>>
 				</div>
 				<div class="form-group col-md-12">
 					<textarea id="editor1"><?php echo $text?></textarea>

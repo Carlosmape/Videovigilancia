@@ -8,6 +8,7 @@ $("a.deleteFile").click(function() { //deleting a user
 			data: {ID : file},
 			success:function(response){
 				//alert(response);
+				$('#deleteFileModal').modal('hide');
 				$.ajax({//refreshing the page
 					type: "post",
 					url: "modules/files/index.php",
