@@ -14,8 +14,13 @@ else {  //you are trying to connect
     if ($database->checkLogin(strip_tags($_POST['inputUser']), md5(strip_tags($_POST['inputPassword'])))) {
       $_SESSION['connection'] = new Connection($_POST['inputUser'],1);
       require "modules/dashboard.php";
+      //echo "logged in";
     }
     else {
+			echo '<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Error!</strong> Wrong user or password.
+</div>';
       require "modules/login.html";
     }
   }
