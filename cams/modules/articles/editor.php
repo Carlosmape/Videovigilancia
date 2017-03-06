@@ -35,19 +35,19 @@ require "../../includes/sqlfunctions.php";
 				<input type="text" name="articleID" value="<?php echo $id;?>" hidden>
 				<div class="form-group col-md-6">
 					<label class="control-label col-md-2" for="articleTitle">Title</label>
-					<input class="col-md-6"type="text" id="articleTitle" name="articleTitle" value="<?php echo $title?>" placeholder="A title for your article...">
+					<input class="form-control col-md-6" type="text" id="articleTitle" name="articleTitle" value="<?php echo $title?>" placeholder="A title for your article...">
 					<div class="row"></div>
 					<label class="control-label col-md-2" for="articleType">Type</label>
-					<select class="col-md-6" type="number" id="articleType" name="articleType">
-						<option value="0" <?
+					<select class="form-control col-md-6" type="number" id="articleType" name="articleType">
+						<option value="0" <?php
 							if ($type==0)
 								echo "selected";
 						?>>Static page (Menu)</option>
-						<option value="1" <?
+						<option value="1" <?php
 							if ($type==1)
 								echo "selected";
 						?>>Blog article</option>
-						<option value="1" <?
+						<option value="1" <?php
 							if ($type==2)
 								echo "selected";
 						?>>Static page (Menu hidden)</option>
@@ -55,24 +55,24 @@ require "../../includes/sqlfunctions.php";
 				</div>
 				<div class="form-group col-md-6">
 					<label class="control-label col-md-2" for="articleCategory">Category</label>
-					<select class="col-md-6" type="number" id="articleCategory" name="articleCategory" placeholder="A category...">
-						<option value="0">-</option>
+					<select class="form-control col-md-6" type="number" id="articleCategory" name="articleCategory" placeholder="A category...">
+						<option value="">-</option>
 						<?php 
 						foreach ($parentscategories as $patcat){
 							?>
-								<option value='<?echo $patcat['ID']?>' <?
+								<option value='<?php echo $patcat['ID']?>' <?php
 									if ($category==$patcat['ID'])
 										echo "selected";
-							?>><?echo $patcat['TITLE']?></option>
-							<?
+							?>><?php echo $patcat['TITLE']?></option>
+							<?php
 							foreach ($childcategories as $chicat){
 								if($patcat['ID'] == $chicat['PARENTID']){
 								?>
-									<option value='<?echo $chicat['ID']?>' <?
+									<option value='<?php echo $chicat['ID']?>' <?php
 										if ($category==$chicat['ID'])
 											echo "selected";
-								?>><?echo $chicat['TITLE']?></option> 
-							<?
+								?>>|→<?php echo $chicat['TITLE']?></option> 
+							<?php 
 								}
 							}
 						}
@@ -80,11 +80,11 @@ require "../../includes/sqlfunctions.php";
 					</select>
 					<div class="row"></div>
 					<label class="control-label col-md-2" for="articleDate">Date</label>
-					<input class="col-md-6" type='date' id='datetimepicker4' name="articleDate" value="<?php echo $date?>">
+					<input class="form-control col-md-6" type='date' id='datetimepicker4' name="articleDate" value="<?php echo $date?>">
 				</div>
 				<div class="form-group col-md-12">
 					<label class="control-label col-md-2" for="">Header image</label>
-					<input id="articleImage" type="text" name="articleImage" placeholder="Path to a image..." value=<?echo $image?>>
+					<input class="form-control " id="articleImage" type="text" name="articleImage" placeholder="Path to a image..." value=<?php if (isset($image)) echo $image;?>>
 				</div>
 				<div class="form-group col-md-12">
 					<textarea id="editor1"><?php echo $text?></textarea>

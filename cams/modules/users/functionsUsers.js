@@ -1,5 +1,3 @@
-$("table.table")
-.tablesorter();
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
 	alert(formData);
@@ -66,6 +64,7 @@ $("a.deleteUser").click(function() { //deleting a user
 			url: 'modules/users/deleteUser.php',
 			data: {ID : userID},
 			success:function(response){
+				$('#deleteUserModal').modal('hide');
 				$.ajax({//refreshing the page
 					type: "post",
 					url: "modules/users/index.php",

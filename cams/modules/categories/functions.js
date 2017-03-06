@@ -63,6 +63,7 @@ $("a.deleteCategory").click(function() { //deleting a user
 			url: 'modules/categories/deleteCategory.php',
 			data: {ID : catID},
 			success:function(response){
+				$('#deleteCategoryModal').modal('hide');
 				$.ajax({//refreshing the page
 					type: "post",
 					url: "modules/categories/index.php",

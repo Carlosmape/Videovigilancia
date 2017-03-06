@@ -3,7 +3,7 @@ require "../../includes/connection.php";
 require "../../includes/config.php";
 require "../../includes/sqlfunctions.php";
  
-	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //if you are connected
+	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout() && $_SESSION['connection']->isAdmin()) { //if you are connected
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$database = new Sqlconnection;//connect to database in order to extract users info
 		if (isset($database)){
@@ -20,8 +20,6 @@ require "../../includes/sqlfunctions.php";
 						<input class="form-control" type="password" id="Password" name="Password" placeholder="A Password ...">
 					</div>
 				</form>
-				<script src="modules/users/functions.js"></script>
-
 			<?php
 			//will show users info
 			//first open table head and body putting as columns as you need
@@ -47,16 +45,24 @@ require "../../includes/sqlfunctions.php";
 								<td id="rowUser<?php echo $row['ID']?>" class="rowUser"><?php echo $row['USER']?></td>
 								<td id="rowMail<?php echo $row['ID']?>" class="rowMail"><?php echo $row['MAIL']?></td>
 								<td id="rowPass<?php echo $row['ID']?>" class="rowPass"><?php echo $row['PASSWORD']?></td>
-								<td id="rowType<?php echo $row['ID']?>" class="rowType"><?php echo $row['TYPE']?></td>
-								<td><a href="#" class="editUser" id="editUser<?php echo $row['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-								<td>
-									<?php
-										if ($_SESSION['connection']->user == $row['USER']){?>
-											<a><span class="glyphicon glyphicon-minus"></span></a>
-										<?php }
-										else{?>
-											<a href="#" class="delete deleteUser" id="deleteUser<?php echo $row['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
-										<?php }?>
+								<td id="rowType<?php echo $row['ID']?>" class="rowType">
+									<?php 
+									if ($row['TYPE']==0)
+										echo "Admin";
+									else if($row['TYPE']==1){
+										echo "User";
+									}
+									?>
+								</td>
+								<?php
+								if ($_SESSION['connection']->user == $row['USER']){?>
+									<td></td>
+									<td></td>
+								<?php }
+								else{?>
+									<td><a href="#" class="editUser" id="editUser<?php echo $row['ID']?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+									<td><a href="#" class="delete deleteUser" id="deleteUser<?php echo $row['ID']?>"><span class="glyphicon glyphicon-trash"></span></a>
+								<?php }?>
 								</td>
 							</tr>
 						<?php }
@@ -82,26 +88,28 @@ require "../../includes/sqlfunctions.php";
 				<h4 class="modal-title">Editing user</h4>
 			</div>
 			<div class="modal-body">
-				<form id="editForm" class="form-horizontal">
+				<form id="editForm" class="form-horizontal col-md-12">
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="email">ID:</label> 
-						<input class="col-sm-8" type="text" id="editID" name="editID" placeholder="" readonly required>
+						<input class="form-control col-sm-8" type="text" id="editID" name="editID" placeholder="" hidden required>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">User:</label>
-						<input class="col-sm-8" type="text" id="editUser" name="editUser" placeholder="" required>
+						<input class="form-control col-sm-8" type="text" id="editUser" name="editUser" placeholder="" required>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Mail:</label>
-						<input class="col-sm-8" type="text" id="editMail" name="editMail" placeholder="">
+						<input class="form-control col-sm-8" type="text" id="editMail" name="editMail" placeholder="">
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Pass:</label>
-						<input class="col-sm-8" type="text" id="editPass" name="editPass" placeholder="New pass...">
+						<input class="form-control col-sm-8" type="text" id="editPass" name="editPass" placeholder="New pass...">
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Type:</label>
-						<input class="col-sm-8" type="text" id="editType" name="editType" placeholder="" required>					
+						<select class="form-control col-sm-8 btn btn-default" type="number" id="editType" name="editType" placeholder="A type" required>
+							<option value="1">User</option>
+							<option value="0">Admin</option>
+						</select>					
 					</div>						
 					<div class="form-group">
 						<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>

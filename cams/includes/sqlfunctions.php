@@ -18,6 +18,9 @@
      function getAllUsers(){
        return $result = $this->connection->query(" SELECT * FROM USERS;");
      }
+     function getUser($username){
+       return $result = $this->connection->query(" SELECT * FROM USERS WHERE USER='$username';");
+     }
      function countUsers(){
        return $result = $this->connection->query(" SELECT COUNT(*) FROM USERS;");
      }
@@ -62,14 +65,13 @@
        return $result = $this->connection->query(" SELECT TITLE,DATE,IMAGEHEADER,CONTENT,TYPE FROM `ARTICLES` WHERE `TITLE`='$title';");
      }
      function checkLogin($user, $pass){
-       $result = $this->connection->query(" SELECT * FROM USERS
-                                            WHERE 'USER' = '$user' AND 'PASSWORD' = '$pass';");
-        var_dump($result);
-        if (!$result) {
+       $result = $this->connection->query(" SELECT * FROM USERS WHERE USER = '$user' AND PASSWORD = '$pass';");
+        //echo ($result->num_rows);
+        if ($result->num_rows < 1) {
           return false;
         }
         else {
-          return true;
+          return $result;
         }
      }
      function addUser($username, $userpass){

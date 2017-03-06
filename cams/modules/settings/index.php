@@ -4,7 +4,7 @@
 	require_once "../../includes/sqlfunctions.php"; 
 	
 	//refresh session activity
-  if (isset($_SESSION['connection'])&& !$_SESSION['connection']->timeout()) {
+  if (isset($_SESSION['connection'])&& !$_SESSION['connection']->timeout() && $_SESSION['connection']->isAdmin()) {
     $_SESSION['connection']->keepalive();
     //obtaining current defines
     $alldefines = get_defined_constants(true);
@@ -64,6 +64,6 @@
 		</form>
 		<?php
 		}else{
-			echo "no estas conectado";
+			echo "You are not connected as admin user";
 			}
 ?>

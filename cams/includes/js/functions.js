@@ -1,8 +1,21 @@
 window.onload = function() {
   /*$("table.table") 
   .tablesorter({widthFixed: true, widgets: ['zebra']}) 
-  .tablesorterPager({container: $("#pager")}); */
-    
+  .tablesorterPager({container: $("#pager")}); */    
+  $("a#profile").click(function(){
+        $.ajax({
+          type: "post",
+          url: "modules/profile/index.php",
+          data: $(this).val(),
+          success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
+            // log a message to the console
+             $(".main").empty();
+             $(".main").html(response);
+
+          }
+
+      });
+    });
   $("a#settings").click(function(){
         $.ajax({
           type: "post",
@@ -26,7 +39,7 @@ window.onload = function() {
             // log a message to the console
              $(".main").empty();
              $(".main").html(response);
-
+             $("table.table").tablesorter();
           }
  
       });
@@ -38,9 +51,9 @@ window.onload = function() {
           data: $(this).val(),
           success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
             // log a message to the console
-             $(".main").empty();
-             $(".main").html(response);
-
+            $(".main").empty();
+            $(".main").html(response);
+						$("table.table").tablesorter();
           }
  
       });
@@ -54,6 +67,7 @@ window.onload = function() {
             // log a message to the console
              $(".main").empty();
              $(".main").html(response);
+             $("table.table").tablesorter();
 
           }
  
@@ -68,6 +82,7 @@ window.onload = function() {
             // log a message to the console
              $(".main").empty();
              $(".main").html(response);
+             $("table.table").tablesorter();
 
           }
  

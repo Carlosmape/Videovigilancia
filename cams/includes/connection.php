@@ -26,5 +26,11 @@ class Connection{
   function keepalive(){//update time without activity
     $this->time = time();
   }
+  function isAdmin(){
+		if ($this->type == 0){
+			return true;
+		}
+		return false;
+	}
 }
 ?>
