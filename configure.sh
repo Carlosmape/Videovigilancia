@@ -2,8 +2,10 @@
 #Installing motion support
 echo "##Installing motion for videovigilance"
 sudo apt-get install motion
-if (sudo cp motion.conf /etc/motion && sudo cp thread1.conf /etc/motion && sudo cp thread2.conf /etc/motion) then
-	echo "##MOTION INSTALLED AND CONFIGURED"
+if (sudo cp motion.conf /etc/motion && sudo cp thread1.conf /etc/motion && sudo cp thread2.conf /etc/motion && sudo cp motion /etc/default) then
+	motion_log="Passed"
+else
+	motion_log="Error"
 fi
 
 #Installing CAMS dependencies
@@ -21,6 +23,11 @@ sudo lighty-enable-mod fastcgi-php
 #Check all
 if(sudo service lighttpd force-reload)then
 	sudo chown -R www-data *
-	echo "##¡CAMS has been configured!. Go to http://yoursite.com/install to do final step"
+	lighttpd_log="Passed"
+else
+	lighttpd_log="Error"
 fi
-
+clear
+echo "#Motion...${motion_log}"
+echo "#Lighttpd..."${lighttpd_log}
+echo "#CAMS...Passed.Reboot and got to http://localhost/install to do final step"
