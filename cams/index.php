@@ -11,8 +11,9 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 else {  //you are trying to connect
   if (isset($_POST['inputUser']) && isset($_POST['inputPassword'])) {
 		$database = new Sqlconnection;
-    if ($database->checkLogin(strip_tags($_POST['inputUser']), md5(strip_tags($_POST['inputPassword'])))) {
-      $_SESSION['connection'] = new Connection($_POST['inputUser'],1);
+    if ($user = $database->checkLogin(strip_tags($_POST['inputUser']), md5(strip_tags($_POST['inputPassword'])))) {
+			$user = $user->fetch_assoc();
+      $_SESSION['connection'] = new Connection($user['USER'],$user['TYPE']);
       require "modules/dashboard.php";
       //echo "logged in";
     }

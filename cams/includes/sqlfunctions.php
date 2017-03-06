@@ -18,6 +18,9 @@
      function getAllUsers(){
        return $result = $this->connection->query(" SELECT * FROM USERS;");
      }
+     function getUser($username){
+       return $result = $this->connection->query(" SELECT * FROM USERS WHERE USER='$username';");
+     }
      function countUsers(){
        return $result = $this->connection->query(" SELECT COUNT(*) FROM USERS;");
      }
@@ -68,7 +71,7 @@
           return false;
         }
         else {
-          return true;
+          return $result;
         }
      }
      function addUser($username, $userpass){

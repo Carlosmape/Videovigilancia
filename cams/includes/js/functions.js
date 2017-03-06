@@ -3,6 +3,20 @@ window.onload = function() {
   .tablesorter({widthFixed: true, widgets: ['zebra']}) 
   .tablesorterPager({container: $("#pager")}); */
     
+  $("a#profile").click(function(){
+        $.ajax({
+          type: "post",
+          url: "modules/profile/index.php",
+          data: $(this).val(),
+          success: function(response){ //si recibimos respuesta, quitamos el anterior artículo y colocamos el uevo
+            // log a message to the console
+             $(".main").empty();
+             $(".main").html(response);
+
+          }
+
+      });
+    });
   $("a#settings").click(function(){
         $.ajax({
           type: "post",
