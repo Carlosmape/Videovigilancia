@@ -6,13 +6,13 @@ require "../../includes/sqlfunctions.php";
 	if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //if you are connected
 		$_SESSION['connection']->keepalive(); //refresh connection timeout
 		$directorio = '../../../blog/uploads';
-			echo '<h1 class="page-header">Categories</h1>';?>
+			echo '<h1 class="page-header">Files</h1>';?>
 				<form id="form" class="row" action="modules/files/uploadFile.php" method="post" enctype="multipart/form-data">
 					<div class="form-group col-md-2">
 						<input class="form-control btn btn-info" type="submit" id="Upload" name="Upload" value="Upload">
 					</div>
 					<div class="form-group col-md-4">
-						<input type="file" id="File" name="File" placeholder="A file ...">
+						<input class="form-control" type="file" id="File" name="File" placeholder="A file ...">
 					</div>
 				</form>
 				<script src="modules/files/functions.js"></script>
@@ -26,6 +26,7 @@ require "../../includes/sqlfunctions.php";
 					<thead>
 						<tr>
 							<th>Name</th>
+							<th>URL</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -41,6 +42,7 @@ require "../../includes/sqlfunctions.php";
 										if ($row!='.' && $row!='..'){ ?>
 											<tr>
 												<td class="fileName"><?php echo $subdirectorio."/".$row?></td>
+												<td class="fileURL"><p><?php echo HOST.'/blog/uploads/'.$subdirectorio.'/'.$row?></p></td>
 												<td><a href="<?php echo HOST.'/blog/uploads/'.$subdirectorio.'/'.$row;?>" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 												<td><a href="#" class="delete deleteFile" id="<?php echo $subdirectorio.'/'.$row?>"><span class="glyphicon glyphicon-trash"></span></a>
 												</td>
@@ -51,6 +53,7 @@ require "../../includes/sqlfunctions.php";
 								else if ($row!='.' && $row!='..'){ ?>
 									<tr>
 										<td class="fileName"><?php echo $row?></td>
+										<td class="fileURL"><p><?php echo HOST.'/blog/uploads/'.$row?></p></td>
 										<td><a href="<?php echo HOST.'/blog/uploads/'.$row;?>" target="_blank"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 										<td><a href="#" class="delete deleteFile" id="<?php echo $row?>"><span class="glyphicon glyphicon-trash"></span></a>
 										</td>

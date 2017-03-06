@@ -90,26 +90,25 @@ require "../../includes/sqlfunctions.php";
 				<h4 class="modal-title">Editing user</h4>
 			</div>
 			<div class="modal-body">
-				<form id="editForm" class="form-horizontal">
+				<form id="editForm" class="form-horizontal col-md-12">
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="email">ID:</label> 
-						<input class="col-sm-8" type="text" id="editID" name="editID" placeholder="" readonly required>
+						<input class="form-control col-sm-8" type="text" id="editID" name="editID" placeholder="" hidden required>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">User:</label>
-						<input class="col-sm-8" type="text" id="editUser" name="editUser" placeholder="" required>
+						<input class="form-control col-sm-8" type="text" id="editUser" name="editUser" placeholder="" required>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Mail:</label>
-						<input class="col-sm-8" type="text" id="editMail" name="editMail" placeholder="">
+						<input class="form-control col-sm-8" type="text" id="editMail" name="editMail" placeholder="">
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Pass:</label>
-						<input class="col-sm-8" type="text" id="editPass" name="editPass" placeholder="New pass...">
+						<input class="form-control col-sm-8" type="text" id="editPass" name="editPass" placeholder="New pass...">
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Type:</label>
-						<select class="col-sm-8 btn btn-default" type="number" id="editType" name="editType" placeholder="A type" required>
+						<select class="form-control col-sm-8 btn btn-default" type="number" id="editType" name="editType" placeholder="A type" required>
 							<option value="1">User</option>
 							<option value="0">Admin</option>
 						</select>					

@@ -97,24 +97,29 @@ require "../../includes/sqlfunctions.php";
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Editing user</h4>
+				<h4 class="modal-title">Editing Category</h4>
 			</div>
 			<div class="modal-body">
-				<form id="editForm" class="form-horizontal">
+				<form id="editForm" class="form-horizontal col-md-12">
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="email">ID:</label> 
-						<input class="col-sm-8" type="text" id="editID" name="editID" placeholder="" readonly required>
+						<input class="col-sm-8" type="text" id="editID" name="editID" placeholder="" hidden required>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Title:</label>
-						<input class="col-sm-8" type="text" id="editTitle" name="editTitle" placeholder="" required>
+						<input class="form-control col-sm-8" type="text" id="editTitle" name="editTitle" placeholder="" required>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Parent:</label>
-						<select class="col-md-6 btn btn-default" type="number" id="editParent" name="editParent" placeholder="A category...">
+						<select class="form-control col-md-6" type="number" id="editParent" name="editParent" placeholder="A category...">
 							<option value="">-</option>
-							<?php foreach ($categories as $cat){
-									echo "<option value='".$cat[ID]."'>".$cat['TITLE']."</option>";
+							<?php 
+							foreach ($parentscategories as $patcat){
+								echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
+								foreach ($childcategories as $chicat){
+									if($patcat['ID'] == $chicat['PARENTID']){
+										echo "<option value='".$chicat['ID']."'>|→".$chicat['TITLE']."</option>";
+									}
+								}
 							}
 							?>
 						</select>
