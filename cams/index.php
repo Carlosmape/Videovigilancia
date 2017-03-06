@@ -18,7 +18,7 @@ else {  //you are trying to connect
       //echo "logged in";
     }
     else {
-			echo '<div class="alert alert-warning alert-dismissible" role="alert">
+			echo '<div class="alert alert-warning alert-dismissible col-md-12" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <strong>Error!</strong> Wrong user or password.
 </div>';

@@ -1,5 +1,3 @@
-$("table.table")
-.tablesorter();
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
 	alert(formData);

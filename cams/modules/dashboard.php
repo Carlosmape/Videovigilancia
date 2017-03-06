@@ -18,7 +18,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">cAms</a>
+            <a class="navbar-brand" href="">CAMS panel</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -78,7 +78,6 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 							</div>
 						</div>
 					</div>
-					<script src="includes/js/functions.js"></script>
 					 <?php
 							}else{
 								echo "Error CAMS could not connect to your DATABASE";

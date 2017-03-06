@@ -20,8 +20,6 @@ require "../../includes/sqlfunctions.php";
 						<input class="form-control" type="password" id="Password" name="Password" placeholder="A Password ...">
 					</div>
 				</form>
-				<script src="modules/users/functions.js"></script>
-
 			<?php
 			//will show users info
 			//first open table head and body putting as columns as you need
