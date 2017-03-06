@@ -26,7 +26,7 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
               <?php if ($_SESSION['connection']->isAdmin()) { ?> 
 								<li><a id="settings" href="#settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
 							<?php } ?>
-              <li><a id="profile" href="#profile"><span class="glyphicon glyphicon-user"></span><?php echo " ".$_SESSION['connection']->user?></a></li>
+              <li><a id="profile" href="#profile"><span class="glyphicon glyphicon-user"></span><?php echo " ".$_SESSION['connection']->user; if($_SESSION['connection']->isAdmin()) echo " (Admin)";?></a></li>
               <li><a href="<?php echo HOST.'/cams/modules/logout.php';?>"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
             </ul>
           </div>
@@ -55,45 +55,25 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 								?>
 								<div class="row placeholders">
 									<div class="col-xs-4 col-sm-4 placeholder">
-										<h2> <span class="glyphicon glyphicon-user"></span> Users - <span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h2>
+										<h4> <span class="glyphicon glyphicon-user"></span> Users - <span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h4>
 									</div>
 									<div class="col-xs-4 col-sm-4 placeholder">
-										<h2> <span class="glyphicon glyphicon-list-alt"></span> Articles - <span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h2>
+										<h4> <span class="glyphicon glyphicon-list-alt"></span> Articles - <span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h4>
 									</div>
 									<div class="col-xs-4 col-sm-4 placeholder">
-											<h2> <span class="glyphicon glyphicon-list"></span> Categories - <span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h2>
+											<h4> <span class="glyphicon glyphicon-list"></span> Categories - <span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h4>
 									</div>
 								</div>
 
-								<h2 class="sub-header">Blog menu</h2>
-								<div class="table-responsive">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>#</th>
-												<th>Header</th>
-												<th>Header</th>
-												<th>Header</th>
-												<th>Header</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>1,001</td>
-												<td>Lorem</td>
-												<td>ipsum</td>
-												<td>dolor</td>
-												<td>sit</td>
-											</tr>
-											<tr>
-												<td>1,002</td>
-												<td>amet</td>
-												<td>consectetur</td>
-												<td>adipiscing</td>
-												<td>elit</td>
-											</tr>
-										</tbody>
-									</table>
+								<h1 class="page-header">Blog menu</h1>
+								<div class="btn-group" role="group" aria-label="...">
+									
+									<?php 
+									$menu = $database->getMenuPages();
+									foreach($menu as $pages){
+										echo "<button type='button' class='btn btn-default'>".$pages['TITLE']."</button>";
+									}
+									?>
 								</div>
 							</div>
 						</div>
