@@ -24,11 +24,6 @@ require "../../includes/sqlfunctions.php";
 							<?php 
 							foreach ($parentscategories as $patcat){
 								echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
-								foreach ($childcategories as $chicat){
-									if($patcat['ID'] == $chicat['PARENTID']){
-										echo "<option value='".$chicat['ID']."'>|→".$chicat['TITLE']."</option>";
-									}
-								}
 							}
 							?>
 						</select>
