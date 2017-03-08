@@ -48,19 +48,22 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
           </div>
           <div class="col-sm-9 col-md-10 main">
             <h1 class="page-header">Live 
-							<a id="liveControlOn" class="btn btn-info" href="" data-src="livecontrol:livecontrol@<?php echo HOST;?>:8080"> <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></a>
-							<a id="liveControlOff" class="btn btn-danger" href="" data-src="livecontrol:livecontrol@<?php echo HOST;?>:8080"> <span class="glyphicon glyphicon-stop" aria-hidden="true"></span></a>
+							<a href="" id="liveControlOn" class="btn btn-info" data-src="<?php echo HOST;?>"> <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></a>
+							<a href="" id="liveControlOff" class="btn btn-danger" data-src="<?php echo HOST;?>"> <span class="glyphicon glyphicon-stop" aria-hidden="true"></span></a>
 						</h1>
             <div class="row liveview">
-				<div class="col-md-4">
-					<img class="col-md-12" src="<?php echo HOST;?>:8081" onerror="if (this.src != '../../blog/uploads/motion_not_running.png') this.src = '../../blog/uploads/motion_not_running.png';"></img>
-				</div>
-				<div class="col-md-4">
-					<img class="col-md-12" src="<?php echo HOST;?>:8082" onerror="if (this.src != '../../blog/uploads/motion_not_running.png') this.src = '../../blog/uploads/motion_not_running.png';"></img>
-				</div>
-				<div class="col-md-4">
-				  <iframe class="thumbnail" src="livecontrol:livecontrol@<?php echo HOST;?>:8080"></iframe>
-				</div>
+							<div class="col-md-6">
+								<div class="thumbnail col-md-12">
+									<img class="col-md-8" src="<?php echo HOST;?>:8081" onerror="if (this.src != '../../blog/uploads/motion_not_running.png') this.src = '../../blog/uploads/motion_not_running.png';"></img>
+									<iframe class="col-md-4" src="<?php echo HOST;?>:8080/1/detection/status"></iframe>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="thumbnail col-md-12">
+									<img class="col-md-8" src="<?php echo HOST;?>:8082" onerror="if (this.src != '../../blog/uploads/motion_not_running.png') this.src = '../../blog/uploads/motion_not_running.png';"></img>
+									<iframe class="col-md-4" src="<?php echo HOST;?>:8080/2/detection/status"></iframe>
+								</div>
+							</div>
             </div>
             <h1 class="page-header">Blog</h1>
             <?php

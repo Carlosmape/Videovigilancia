@@ -3,26 +3,16 @@ window.onload = function() {
   .tablesorter({widthFixed: true, widgets: ['zebra']}) 
   .tablesorterPager({container: $("#pager")}); */    
   $("a#liveControlOn").click(function(){
-		source = getAttribute("data-src");
-		$.ajax({
-			url: source+"/1/detection/start",
-			success: function(){
-				$.ajax({
-					url: source+"/2/detection/start"
-				});
-			}
-		});
+		source = $("a#liveControlOn").attr("data-src");
+		//alert(source+":8080/1&2/action/quit");
+		$.ajax({type: "get", url: source+":8080/1/detection/start"});
+		$.ajax({type: "get", url: source+":8080/2/detection/start"});
 	});
   $("a#liveControlOff").click(function(){
-		source = getAttribute("data-src");
-		$.ajax({
-			url: source+"/1/detection/pause",
-			success: function(){
-				$.ajax({
-					url: source+"/2/detection/pause"
-				});
-			}
-		});
+		source = $("a#liveControlOff").attr("data-src");
+		//alert(source+":8080/1&2/action/quit");
+		$.ajax({type: "get", url: source+":8080/1/detection/pause"});
+		$.ajax({type: "get", url: source+":8080/2/detection/pause"});
 	});
 	$("a#profile").click(function(){
         $.ajax({
