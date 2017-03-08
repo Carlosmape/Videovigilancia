@@ -11,8 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<?php echo DESCRIPTION?>">
-    <meta name=”keywords” content="Blog,informática,camape,freelance,desarrollador" />
+    <meta name=”keywords” content="<?php echo DESCRIPTION?>"/>
     <meta name="author" content="CAMS">
+    <link rel="shortcut icon" type="image/svg" href="blog/favicon.svg"/>
     
 
     <title><?php echo TITLE;?>|<?php
