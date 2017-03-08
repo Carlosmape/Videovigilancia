@@ -2,7 +2,29 @@ window.onload = function() {
   /*$("table.table") 
   .tablesorter({widthFixed: true, widgets: ['zebra']}) 
   .tablesorterPager({container: $("#pager")}); */    
-  $("a#profile").click(function(){
+  $("a#liveControlOn").click(function(){
+		source = getAttribute("data-src");
+		$.ajax({
+			url: source+"/1/detection/start",
+			success: function(){
+				$.ajax({
+					url: source+"/2/detection/start"
+				});
+			}
+		});
+	});
+  $("a#liveControlOff").click(function(){
+		source = getAttribute("data-src");
+		$.ajax({
+			url: source+"/1/detection/pause",
+			success: function(){
+				$.ajax({
+					url: source+"/2/detection/pause"
+				});
+			}
+		});
+	});
+	$("a#profile").click(function(){
         $.ajax({
           type: "post",
           url: "modules/profile/index.php",
