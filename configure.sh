@@ -10,6 +10,7 @@ fi
 
 #Installing CAMS dependencies
 echo "##Installing CAMS for the interface"
+sudo apt-get install php5
 sudo apt-get install mysql-server*
 sudo apt-get install lighttpd
 
