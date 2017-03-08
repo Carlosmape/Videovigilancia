@@ -13,9 +13,6 @@ echo "##Installing CAMS for the interface"
 sudo apt-get install mysql-server*
 sudo apt-get install lighttpd
 
-#Copying CAMS to /var/www/html
-sudo cp -r * /var/www/html
-
 #adding php support
 sudo lighty-enable-mod fastcgi 
 sudo lighty-enable-mod fastcgi-php
@@ -26,8 +23,14 @@ if(sudo service lighttpd force-reload)then
 	lighttpd_log="Passed"
 else
 	lighttpd_log="Error"
+
+if(sudo cp -r * /var/www/html/)then
+	echo "#CAMS copied to /var/www/html/"
+fi
+if(sudo service lighttpd force-reload)then
+	sudo chown -R www-data *
 fi
 clear
 echo "#Motion...${motion_log}"
-echo "#Lighttpd..."${lighttpd_log}
+echo "#Lighttpd...${lighttpd_log}"
 echo "#CAMS...Passed.Reboot and got to http://localhost/install to do final step"

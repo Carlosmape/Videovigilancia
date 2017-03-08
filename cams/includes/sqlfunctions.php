@@ -39,6 +39,9 @@
      function getMenuPages(){
        return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE=0 ORDER BY `DATE` DESC, `ID` DESC;");
      }
+     function getHiddenPages(){
+       return $result = $this->connection->query(" SELECT * FROM `ARTICLES` WHERE TYPE=2 ORDER BY `DATE` DESC, `ID` DESC;");
+     }
      function getAllArticles(){
        return $result = $this->connection->query(" SELECT * FROM `ARTICLES` ORDER BY `DATE` DESC, `ID` DESC;");
      }

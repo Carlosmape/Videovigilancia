@@ -66,26 +66,49 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
 							{
 								?>
 								<div class="row placeholders">
-									<div class="col-xs-4 col-sm-4 placeholder">
+									<div class="col-xs-3 col-sm-3 placeholder">
 										<h4> <span class="glyphicon glyphicon-user"></span> Users - <span class="text-muted"><?php echo mysqli_fetch_array($database->countUsers())['COUNT(*)']?></span></h4>
 									</div>
-									<div class="col-xs-4 col-sm-4 placeholder">
+									<div class="col-xs-3 col-sm-3 placeholder">
 										<h4> <span class="glyphicon glyphicon-list-alt"></span> Articles - <span class="text-muted"><?php echo mysqli_fetch_array($database->countArticles())['COUNT(*)']?></span></h4>
 									</div>
-									<div class="col-xs-4 col-sm-4 placeholder">
+									<div class="col-xs-3 col-sm-3 placeholder">
 											<h4> <span class="glyphicon glyphicon-list"></span> Categories - <span class="text-muted"><?php echo mysqli_fetch_array($database->countCategories())['COUNT(*)']?></span></h4>
 									</div>
+									<div class="col-xs-3 col-sm-3 placeholder">
+											<h4> <span class="glyphicon glyphicon-hdd"></span> Disk space - <span class="text-muted"><?php 
+												$bytes = disk_free_space("../../");
+												$si_prefix = array( 'B', 'KB', 'MB', 'GB', 'TB', 'EB', 'ZB', 'YB' );
+												$base = 1024;
+												$class = min((int)log($bytes , $base) , count($si_prefix) - 1);
+												echo sprintf('%1.2f' , $bytes / pow($base,$class)) . ' ' . $si_prefix[$class];
+											?></span></h4>
+									</div>
 								</div>
-
-								<h1 class="page-header">Blog menu</h1>
-								<div class="btn-group" role="group" aria-label="...">
-									
-									<?php 
-									$menu = $database->getMenuPages();
-									foreach($menu as $pages){
-										echo "<button type='button' class='btn btn-default'>".$pages['TITLE']."</button>";
-									}
-									?>
+								
+								<div class="col-md-6 col-xs-12">
+									<h1>Blog menu</h1>
+									<div class="btn-group" role="group" aria-label="...">
+										
+										<?php 
+										$menu = $database->getMenuPages();
+										foreach($menu as $pages){
+											echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
+										}
+										?>
+									</div>
+								</div>
+								<div class="col-md-6 col-xs-12">
+									<h1>Hidden pages</h1>
+									<div class="btn-group" role="group" aria-label="...">
+										
+										<?php 
+										$menu = $database->getHiddenPages();
+										foreach($menu as $pages){
+											echo "<a target='_blank' href='/blog.php?post=".$pages['TITLE']."' type='button' class='btn btn-default'>".$pages['TITLE']."</a>";
+										}
+										?>
+									</div>
 								</div>
 							</div>
 						</div>

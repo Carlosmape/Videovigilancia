@@ -47,7 +47,7 @@ require "../../includes/sqlfunctions.php";
 							if ($type==1)
 								echo "selected";
 						?>>Blog article</option>
-						<option value="1" <?php
+						<option value="2" <?php
 							if ($type==2)
 								echo "selected";
 						?>>Static page (Menu hidden)</option>
