@@ -4,7 +4,7 @@ sudo apt-get install lighttpd
 #adding php support
 sudo lighty-enable-mod fastcgi 
 sudo lighty-enable-mod fastcgi-php
-if(sudo cp * /var/www/html/)then
+if(sudo cp -r * /var/www/html/)then
 	echo "#CAMS copied to /var/www/html/"
 fi
 if(sudo service lighttpd force-reload)then
