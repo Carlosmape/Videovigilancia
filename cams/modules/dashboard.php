@@ -50,13 +50,13 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
             <h1 class="page-header">Live</h1>
             <div class="row liveview">
 				<div class="col-md-4">
-					<img class="col-md-12" src="<?php echo HOST?>:8081" onerror="if (this.src != '../../blog/uploads/motion_not_running.png') this.src = '../../blog/uploads/motion_not_running.png';"></img>
+					<img class="col-md-12" src="/:8081" onerror="if (this.src != '../../blog/uploads/motion_not_running.png') this.src = '../../blog/uploads/motion_not_running.png';"></img>
 				</div>
 				<div class="col-md-4">
-					<img class="col-md-12" src="<?php echo HOST?>:8082" onerror="if (this.src != '../../blog/uploads/motion_not_running.png') this.src = '../../blog/uploads/motion_not_running.png';"></img>
+					<img class="col-md-12" src="/:8082" onerror="if (this.src != '../../blog/uploads/motion_not_running.png') this.src = '../../blog/uploads/motion_not_running.png';"></img>
 				</div>
 				<div class="col-md-4">
-				  <iframe class="thumbnail" src="<?php echo HOST?>:8080"></iframe>
+				  <iframe class="thumbnail" src="/:8080"></iframe>
 				</div>
             </div>
             <h1 class="page-header">Blog</h1>
