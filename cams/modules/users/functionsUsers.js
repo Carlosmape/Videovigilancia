@@ -1,6 +1,6 @@
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
-	alert(formData);
+	//alert(formData);
 	$.ajax({
 		type: 'POST',
 		url: 'modules/users/createUser.php',
@@ -29,8 +29,9 @@ $("a.editUser").click(function() { //editing a user
 	$("input#editMail").val($("#rowMail"+userID).html());
 	$("input#editType").val($("#rowType"+userID).html());
 	$('#editUserModal').modal('show');
-	$("input#Edit").click(function() {
+	$("button#Edit").click(function() {
 		$('#editUserModal').modal('hide');
+		$('.modal-backdrop.fade.in').remove();
 		var formData = $("form#editForm").serialize();
 		//alert(formData);
 		$.ajax({
@@ -56,15 +57,16 @@ $("a.editUser").click(function() { //editing a user
 });	
 $("a.deleteUser").click(function() { //deleting a user
 	var userID = this.id.match(/\d+$/)[0];
-	alert(userID);
+	//alert(userID);
 	$('#deleteUserModal').modal('show');
 	$("button#Delete").click(function(){
+		$('#deleteUserModal').modal('hide');
+		$('.modal-backdrop.fade.in').remove();
 		$.ajax({
 			type: 'POST',
 			url: 'modules/users/deleteUser.php',
 			data: {ID : userID},
 			success:function(response){
-				$('#deleteUserModal').modal('hide');
 				$.ajax({//refreshing the page
 					type: "post",
 					url: "modules/users/index.php",

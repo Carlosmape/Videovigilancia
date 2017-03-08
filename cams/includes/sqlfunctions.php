@@ -78,21 +78,17 @@
         }
      }
      function addUser($username, $userpass){
-				$result = $this->connection->query("INSERT INTO `USERS`(`ID`, `USER`, `MAIL`, `PASSWORD`, `TYPE`) VALUES (NULL, '$username',NULL ,'$userpass','1')");
+				$result = $this->connection->query("INSERT INTO `USERS`(`USER`, `MAIL`, `PASSWORD`, `TYPE`) VALUES ('$username',NULL ,'$userpass','1')");
 				echo mysqli_error($this->connection);
 				return $result;
 		 }
      function addCategory($title, $parentid){
-			 if (empty($parentid)){
-					$parentid='NULL';
-			 }
-			 
-				$result = $this->connection->query("INSERT INTO `CATEGORIES`(`ID`, `PARENTID`, `TITLE`) VALUES (NULL, '$parentid','$title');");
+				$result = $this->connection->query("INSERT INTO `CATEGORIES`(`PARENTID`, `TITLE`) VALUES ($parentid ,'$title');");
 				echo mysqli_error($this->connection);
 				return $result;
 		 }
      function addArticle($tite, $type, $category, $date){
-				$result = $this->connection->query("INSERT INTO `ARTICLES`(`ID`, `TITLE`, `TYPE`, `CATEGORIES`, `DATE`) VALUES (NULL, '$title','$type','$category','$date')");
+				$result = $this->connection->query("INSERT INTO `ARTICLES`(`TITLE`, `TYPE`, `CATEGORIES`, `DATE`) VALUES ('$title','$type',$category,'$date')");
 				echo mysqli_error($this->connection);
 				return $result;
 		 }

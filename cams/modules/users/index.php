@@ -113,7 +113,7 @@ require "../../includes/sqlfunctions.php";
 					</div>						
 					<div class="form-group">
 						<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
-						<input class="btn btn-info col-sm-4" type="button" id="Edit" name="Edit" data-dismiss="modal" value="Edit">
+						<button class="btn btn-info col-sm-4" type="button" id="Edit" name="Edit" data-dismiss="modal" value="Edit">Edit</button>
 					</div>
 				</form>
 			</div>

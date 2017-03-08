@@ -1,6 +1,6 @@
 $("input#Save").click(function() {
 	var formData = $("form#form").serialize();
-	alert(formData);
+	//alert(formData);
 	$.ajax({
 		type: 'POST',
 		url: 'modules/categories/createCategory.php',
@@ -28,8 +28,9 @@ $("a.editCategory").click(function() { //editing a user
 	$("input#editTitle").val($("#rowTitle"+userID).html());
 	$("input#editParent").val($("#rowParent"+userID).html());
 	$('#editCategoryModal').modal('show');
-	$("input#Edit").click(function() {
+-	$("button#Edit").click(function() {
 		$('#editCategoryModal').modal('hide');
+		$('.modal-backdrop.fade.in').remove();
 		var formData = $("form#editForm").serialize();
 		//alert(formData);
 		$.ajax({
@@ -58,12 +59,15 @@ $("a.deleteCategory").click(function() { //deleting a user
 	//alert(catID);
 	$('#deleteCategoryModal').modal('show');
 	$("button#Delete").click(function(){
+		$('#deleteCategoryModal').modal('hide');
+		$('.modal-backdrop.fade.in').remove();
 		$.ajax({
 			type: 'POST',
 			url: 'modules/categories/deleteCategory.php',
 			data: {ID : catID},
 			success:function(response){
 				$('#deleteCategoryModal').modal('hide');
+				$('.modal-backdrop.fade.in').remove();
 				$.ajax({//refreshing the page
 					type: "post",
 					url: "modules/categories/index.php",
