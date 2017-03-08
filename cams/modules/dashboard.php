@@ -48,8 +48,8 @@ if (isset($_SESSION['connection']) && !$_SESSION['connection']->timeout()) { //y
           </div>
           <div class="col-sm-9 col-md-10 main">
             <h1 class="page-header">Live 
-							<a href="" id="liveControlOn" class="btn btn-info" data-src="<?php echo HOST;?>"> <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></a>
-							<a href="" id="liveControlOff" class="btn btn-danger" data-src="<?php echo HOST;?>"> <span class="glyphicon glyphicon-stop" aria-hidden="true"></span></a>
+							<a href="" id="liveControlOn" class="btn btn-lg btn-info" data-src="<?php echo HOST;?>"> <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></a>
+							<a href="" id="liveControlOff" class="btn btn-lg btn-danger" data-src="<?php echo HOST;?>"> <span class="glyphicon glyphicon-stop" aria-hidden="true"></span></a>
 						</h1>
             <div class="row liveview">
 							<div class="col-md-6">
