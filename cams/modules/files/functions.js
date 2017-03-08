@@ -2,13 +2,14 @@ $("a.deleteFile").click(function() { //deleting a user
 	var file = this.id;
 	$('#deleteFileModal').modal('show');
 	$("button#Delete").click(function(){
+		$('#deleteFileModal').modal('hide');
+		$('.modal-backdrop.fade.in').remove();
 		$.ajax({
 			type: 'POST',
 			url: 'modules/files/deleteFile.php',
 			data: {ID : file},
 			success:function(response){
 				//alert(response);
-				$('#deleteFileModal').modal('hide');
 				$.ajax({//refreshing the page
 					type: "post",
 					url: "modules/files/index.php",

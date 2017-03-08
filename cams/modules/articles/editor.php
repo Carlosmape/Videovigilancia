@@ -56,7 +56,7 @@ require "../../includes/sqlfunctions.php";
 				<div class="form-group col-md-6">
 					<label class="control-label col-md-2" for="articleCategory">Category</label>
 					<select class="form-control col-md-6" type="number" id="articleCategory" name="articleCategory" placeholder="A category...">
-						<option value="">-</option>
+						<option value="0">-</option>
 						<?php 
 						foreach ($parentscategories as $patcat){
 							?>

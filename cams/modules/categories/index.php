@@ -20,7 +20,7 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group col-md-4">
 						<label class="control-label col-md-4" for="categoryParent">Parent</label>
 						<select class="col-md-6 btn btn-default" type="number" id="categoryParent" name="categoryParent" placeholder="A category...">
-							<option value="">-</option>
+							<option value="0">-</option>
 							<?php 
 							foreach ($parentscategories as $patcat){
 								echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
@@ -29,7 +29,7 @@ require "../../includes/sqlfunctions.php";
 						</select>
 					</div>
 				</form>
-				<script src="modules/categories/functions.js"></script>
+				<script src="modules/categories/functionsCategories.js"></script>
 
 			<?php
 			//will show users info
@@ -106,7 +106,7 @@ require "../../includes/sqlfunctions.php";
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">Parent:</label>
 						<select class="form-control col-md-6" type="number" id="editParent" name="editParent" placeholder="A category...">
-							<option value="">-</option>
+							<option value="0">-</option>
 							<?php 
 							foreach ($parentscategories as $patcat){
 								echo "<option value='".$patcat['ID']."'>".$patcat['TITLE']."</option>";
@@ -121,7 +121,7 @@ require "../../includes/sqlfunctions.php";
 					</div>
 					<div class="form-group">
 						<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
-						<input class="btn btn-info col-sm-4" type="button" id="Edit" name="Edit" data-dismiss="modal" value="Edit">
+						<button class="btn btn-info col-sm-4" type="button" id="Edit" name="Edit" value="Edit" data-dismiss="modal">Edit</button>
 					</div>
 				</form>
 			</div>
@@ -141,7 +141,7 @@ require "../../includes/sqlfunctions.php";
 			<div	class="modal-footer">
 				<form>
 					<button type="button" class="col-sm-offset-2 col-sm-4 btn btn-default" data-dismiss="modal">Cancel</button>
-					<button class="btn btn-danger col-sm-4" type="button" id="Delete" name="Delete" data-dismiss="modal" value="Delete">Delete</button>
+					<button class="btn btn-danger col-sm-4" type="button" id="Delete" name="Delete" value="Delete">Delete</button>
 				</form>
 			</div>
 		</div>

@@ -18,7 +18,7 @@
 		<script src="cams/includes/js/jquery-3.1.1.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="cams/includes/js/bootstrap.min.js"></script>
+    <script src="cams/includes/js/bootstrap.js"></script>
 		
 		<script src="blog/js/functions.js"></script>
 		<script>

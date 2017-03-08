@@ -54,6 +54,7 @@ $("input#articleSave").click(function(){
 		$('#deleteArticleModal').modal('show');
 		$("button#Delete").click(function(){
 			$('#deleteArticleModal').modal('hide');
+			$('.modal-backdrop.fade.in').remove();
 			$.ajax({
 				type: 'POST',
 				url: 'modules/articles/deleteArticle.php',
